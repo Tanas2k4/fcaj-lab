@@ -13,14 +13,14 @@ pre: " <b> 1.1. </b> "
 * Thực hành cấu hình môi trường và triển khai các tài nguyên AWS cơ bản.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                                 | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------- |
-| 4   | - Cấu hình và dọn dẹp tài nguyên máy <br> - Meet team để trao đổi, giải đáp thắc mắc và lên kế hoạch cho tuần                                                                                            | 20/04/2026   | 20/04/2026      |
-| 5   | - Tạo budgets trong Billing and Cost Management <br> - Tìm hiểu về IAM User và Group <br> - Tìm hiểu về Secret Key (cách tạo, mục đích sử dụng và mối liên hệ với các thành phần khác)                  | 21/04/2026   | 21/04/2026      |
-| 6   | - Thực hiện các module nhỏ trong task để kiểm thêm credit <br> - Kết nối và cấu hình AWS CLI <br> - Tìm hiểu các lệnh cơ bản trong AWS CLI                                                              | 22/04/2026   | 22/04/2026      |
-| 7   | - Tìm hiểu các khái niệm trong VPC: <br>&emsp; + Subnet <br>&emsp; + NAT Gateway <br>&emsp; + ...                                                                                                        | 23/04/2026   | 23/04/2026      |
-| 2   | - Tìm hiểu Elastic Load Balancing và Network Load Balancing <br> - Thực hành: <br>&emsp; + Tạo VPC <br>&emsp; + Tạo 2 public subnet & 2 private subnet <br>&emsp; + Tạo Security Group <br>&emsp; + Cấu hình Route Table và mapping với EC2 | 24/04/2026   | 24/04/2026      |
-| 3   | - (Chưa cập nhật)                                                                                                                                                                                         | 25/04/2026   |                 |                |
+| Thứ | Công việc                                                                                                                                                                                                 | Ngày bắt đầu | Ngày hoàn thành |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- |
+| 2   | - Cấu hình và dọn dẹp tài nguyên máy <br> - Meet team để trao đổi, giải đáp thắc mắc và lên kế hoạch cho tuần                                                                                            | 20/04/2026   | 20/04/2026      |
+| 3   | - Tạo budgets trong Billing and Cost Management <br> - Tìm hiểu về IAM User và Group <br> - Tìm hiểu về Secret Key (cách tạo, mục đích sử dụng và mối liên hệ với các thành phần khác)                  | 21/04/2026   | 21/04/2026      |
+| 4   | - Thực hiện các module nhỏ trong task để kiểm thêm credit <br> - Kết nối và cấu hình AWS CLI <br> - Tìm hiểu các lệnh cơ bản trong AWS CLI                                                              | 22/04/2026   | 22/04/2026      |
+| 5   | - Tìm hiểu các khái niệm trong VPC: <br>&emsp; + Subnet <br>&emsp; + NAT Gateway <br>&emsp; + ...                                                                                                        | 23/04/2026   | 23/04/2026      |
+| 6   | - Tìm hiểu Elastic Load Balancing và Network Load Balancing <br> - Thực hành: <br>&emsp; + Tạo VPC <br>&emsp; + Tạo 2 public subnet & 2 private subnet <br>&emsp; + Tạo Security Group <br>&emsp; + Cấu hình Route Table và mapping với EC2 | 24/04/2026   | 24/04/2026      |
+| 7   | - (Chưa cập nhật) 
 
 
 ### Kết quả đạt được tuần 1:
@@ -41,7 +41,7 @@ pre: " <b> 1.1. </b> "
   * Sử dụng các lệnh cơ bản để thao tác với AWS.
 
 * Thực hành và củng cố kiến thức thông qua các module nhỏ:
-  * Hoàn thành một số task để tích lũy thêm credit.
+  * Hoàn thành một số task dành cho tài khoản được khuyến mãi redit.
 
 * Hiểu các khái niệm cơ bản trong VPC:
   * Subnet (Public/Private).
