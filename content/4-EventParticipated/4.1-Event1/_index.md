@@ -1,6 +1,6 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-05-23
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
@@ -10,117 +10,106 @@ pre: " <b> 4.1. </b> "
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
 {{% /notice %}}
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Summary Report: "AWS Vietnam Community Day 2026"
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Explore the latest technology trends in Generative AI (GenAI), Multi-Agent systems, and AWS cloud infrastructure optimization.
+- Gain practical insights and learn solution design experiences from leading engineers and experts in Vietnam.
+- Connect with the technology community, share soft skills, teamwork lessons, and career orientation in the AI era.
 
-### Speakers
+### Speakers & Topics
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Tinh Truong** – Platform Engineer at GoTymeX
+  * *Topic:* Context Is Everything: Making AI Actually Work for You
+- **Pham Ng Hai Anh** – G-AsiaPacific Vietnam, AWS Community Builder
+  * *Topic:* Friendly AI Assistant w/ Amazon Q in QuickSight
+- **Nguyen Tuan Thinh** – DevOps Engineer, First Cloud AI Journey
+  * *Topic:* From Edge to Origin: CloudFront as Your Foundation
+- **Team VIB** – LotusHacks 2026
+  * *Topic:* 36 hrs with LotusHacks: Building UTMorpho from Idea to Reality
+- **Duc Dao** – Solution Architect at Cloud Kinetics
+  * *Topic:* Non-Determinism of "Deterministic" LLM Settings
+- **Vy Lam** – Senior Business Systems Analyst at VPBank
+  * *Topic:* Enterprise-Grade Multi-Agent System: The Case of Startup Credit Scoring
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### 1. Context Management in AI Applications (Speaker Tinh Truong)
+- **The Importance of Context**: AI functions effectively only when provided with complete context information. Context bridges the gap and minimizes hallucinations of LLMs.
+- **Optimization Strategy**: Prompt structuring, context window size management, and matching retrieval strategies to ensure the model yields the most accurate output.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+#### 2. AI Assistant with Amazon Q in QuickSight (Speaker Pham Ng Hai Anh)
+- **Integrating GenAI into Business Intelligence**: Utilizing Amazon Q in QuickSight to automate data analysis and automatically generate dashboards using natural language queries.
+- **Productivity Boost**: Shortens time-to-insight for businesses and facilitates quick decisions through direct natural language interaction with data.
 
-#### Transitioning to modern application architecture – Microservices
+#### 3. Infrastructure Optimization with Amazon CloudFront (Speaker Nguyen Tuan Thinh)
+- **EC2 CPU Offloading**: Using CloudFront to handle data compression (reducing transfer payloads, saving up to 82% CPU load for the origin EC2 servers) and TLS handshake processing.
+- **Robust Security at Edge**: Leveraging AWS's global Edge network to mitigate DDoS attacks and filter malicious traffic directly at the border before it reaches the origin servers.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+#### 4. 36-Hour Hackathon Journey at LotusHacks: Building UTMorpho (Team VIB)
+- **UTMorpho Project**: Building an AI Agent to generate and directly edit user interfaces on an interactive visual canvas (WYSIWYG editor) from natural language descriptions, preventing design drift from repeated re-prompts.
+- **Hackathon Lessons**: The most practical ideas arise from daily operational pain points. Under tight time pressure (36 consecutive hours), coordination and chemistry within the team matter more than individual skills.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+#### 5. LLM Non-Determinism in Real-world Applications (Speaker Duc Dao)
+- **Non-Determinism Phenomenon**: Analyzing why LLMs produce variable outputs for identical inputs even with temperature configured to 0 (caused by float calculation errors on GPUs and concurrency).
+- **Control Strategy**: Designing system architectures and guardrails (e.g., structured output parsing) to mitigate non-deterministic behavior in enterprise-grade applications requiring strict consistency.
 
-#### Domain-Driven Design (DDD)
+#### 6. Enterprise-Grade Multi-Agent System for Credit Scoring (Speaker Vy Lam)
+- **Startup Credit Approval Challenge**: Overcoming the information asymmetry between traditional banking governance standards and the dynamic, volatile nature of startup data.
+- **Multi-Agent Architecture**: Modeling the virtual credit committee process into specialized AI agents (Financial Agent, Compliance Agent, Risk Agent, etc.).
+- **Business Value**: Automating complex analysis workflows, saving up to 95% of operational time and costs while strictly maintaining compliance, security, and governance standards.
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+### Lessons Gained
 
-#### Event-Driven Architecture
+#### AI Application Design Mindset
+- **Business-First Approach**: AI applications must solve real-world business challenges (e.g., credit committee approval or automated BI analytics) rather than adopting technology for technology's sake.
+- **Multi-Agent Paradigm**: Deconstructing large systems into dedicated AI agents with clear responsibilities and boundaries to handle complexity systematically.
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+#### Cloud & AI Architecture
+- **Leveraging the Edge**: Maximizing CDN (Amazon CloudFront) capabilities to optimize content delivery and establish a robust perimeter defense shield.
+- **Enforcing Consistency**: Structuring large language model output mechanisms to guarantee reliable and predictable application behaviors.
 
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+#### Soft Skills & Teamwork
+- **Critical Communication**: Smooth collaboration and transparent cross-functional alignment determine project success more than isolated individual efforts.
 
 ### Key Takeaways
 
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+* **Business Aspect**: Implementing a Multi-Agent model automates startup credit analysis and reduces processing time by up to 95%.
+* **Technical Aspect**: Understanding LLM non-determinism and optimizing Context to maximize AI prompt performance.
+* **Infrastructure Aspect**: Deploying CloudFront at Edge to reduce data transfer fees, offload origin EC2 CPU usage by up to 82%, and bolster DDoS protection.
 
 ### Applying to Work
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- Applying context optimization techniques to improve accuracy for chatbots and AI pipelines in current workflows.
+- Implementing Amazon CloudFront caching and edge security rules to optimize web server delivery and protection.
+- Researching Multi-Agent frameworks to automate complex, multi-step business approval processes.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending **AWS Vietnam Community Day 2026** was a highly valuable experience, offering a comprehensive look from theoretical design to enterprise-grade AI and Cloud deployment:
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Learning from Industry Experts
+- Speakers from VPBank, GoTymeX, and Cloud Kinetics shared highly specialized, practical insights from production-grade architectures.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### Exploring Advanced Solutions
+- Hands-on look at next-gen BI via Amazon Q in QuickSight, investigating LLM non-determinism under zero-temperature configurations, and studying VPBank's Multi-Agent architecture.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Community Networking
+- Discussing directly with AWS Community Builders and industry peers, broadening professional networks, and observing standard engineering practices.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+#### Key Takeaway
+- AI and Cloud are mutually beneficial; a great AI system requires an optimized, secure-at-edge cloud infrastructure and resilient software architectures to manage the uncertainty of LLMs.
 
 #### Some event photos
-*Add your event photos here*  
+
+![Ms. Ngoc Uyen speaking](/images/meetup-2305.jpg)
+*Figure 1: Ms. Ngoc Uyen sharing her insights at the session*
+
+![Winning the Lucky Draw](/images/meetup-2305-3.jpg)
+*Figure 2: I was fortunate enough to win the Lucky Draw prize at the event*
+
+![AWS Vietnam Community Day 2026](/images/meetup-2305-2.jpg)
+*Figure 3: Overview of AWS Vietnam Community Day 2026 event*
 
 > Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.

@@ -1,57 +1,35 @@
 ---
 title: "Week 8 Worklog"
-date: 2024-01-01
+date: 2026-06-08
 weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
 
 ### Week 8 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Hold a periodic team meeting to evaluate progress and plan for the new week.
+* Continue optimizing the connection configuration between EC2 and the RDS database in the real application.
+* Research Amazon CloudFront content delivery mechanisms and reference real-world solutions from AWS Blogs.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date |
+| --- | --- | --- | --- |
+| 2 | - Team meeting to report on the previous week's progress and distribute detailed tasks for the new week | 06/08/2026 | 06/08/2026 |
+| 3 | - Review advanced security models and data retrieval on EC2 and RDS | 06/09/2026 | 06/09/2026 |
+| 4 | - Deploy the actual connection configuration from the source code running on EC2 to the Amazon RDS database | 06/10/2026 | 06/10/2026 |
+| 5 | - Learn about Amazon CloudFront's caching mechanism and performance optimization | 06/11/2026 | 06/11/2026 |
+| 6 | - Practice configuring CloudFront Distribution and integrating with EC2/S3 | 06/12/2026 | 06/12/2026 |
+| 7 | - Participate in Event 2: First Cloud AI Journey Meetup | 06/13/2026 | 06/13/2026 |
 
 
 ### Week 8 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Ensured the project is on track through the team coordination meeting.
+* Successfully integrated the application source code with the RDS database (configured environment variables, secure database connection).
+* Understood how to optimize page load performance and distribute static/dynamic content via CloudFront.
+* Participated in Event 2: First Cloud AI Journey Meetup to network with professionals and gain real-world career experience.

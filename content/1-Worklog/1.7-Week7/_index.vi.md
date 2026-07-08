@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 7"
-date: 2024-01-01
+date: 2026-06-01
 weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
@@ -12,48 +12,23 @@ pre: " <b> 1.7. </b> "
 
 ### Mục tiêu tuần 7:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Đánh giá tiến độ hiện tại cùng đội ngũ và phân chia công việc cho giai đoạn tiếp theo.
+* Củng cố kiến thức thực hành nâng cao về Amazon EC2 và Amazon RDS.
+* Triển khai chạy thử nghiệm ứng dụng bằng cách đưa mã nguồn vào máy ảo EC2 và cấu hình môi trường chạy.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 2 | - Họp nhóm (Meet team) báo cáo tiến độ và phân chia công việc chi tiết cho tuần mới | 01/06/2026 | 01/06/2026 |  |
+| 3 | - Ôn tập và nghiên cứu kỹ lại về các cấu hình bảo mật, kết nối của Amazon EC2 | 02/06/2026 | 02/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Ôn tập về cách khởi tạo, phân bổ lưu trữ và kết nối của Amazon RDS | 03/06/2026 | 03/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Thực hiện đẩy mã nguồn ứng dụng (source code) lên máy ảo EC2 | 04/06/2026 | 04/06/2026 |  |
+| 6 | - Cấu hình môi trường trên máy ảo EC2 và chạy thử nghiệm | 05/06/2026 | 05/06/2026 |  |
+| 7 | - Rà soát lại hệ thống, thử nghiệm các kịch bản lỗi và tối ưu hiệu suất ban đầu | 06/06/2026 | 06/06/2026 |  |
 
 
 ### Kết quả đạt được tuần 7:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hoàn thành báo cáo tiến độ và đồng bộ hóa kế hoạch hành động tiếp theo của nhóm.
+* Nắm chắc cơ chế kết nối và cấu hình an toàn giữa máy chủ ứng dụng EC2 và cơ sở dữ liệu RDS.
+* Đẩy thành công mã nguồn ứng dụng lên máy ảo EC2, hoàn tất cấu hình môi trường ban đầu và ứng dụng chạy thành công trên máy ảo.

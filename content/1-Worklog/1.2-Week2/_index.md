@@ -1,6 +1,6 @@
 ---
 title: "Week 2 Worklog"
-date: 2024-01-01
+date: 2026-04-27
 weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
@@ -12,46 +12,28 @@ pre: " <b> 1.2. </b> "
 
 ### Week 2 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Continue learning and practicing AWS services related to network connectivity and security.
+* Practice SSH into private instances using Instance Connect Endpoint.
+* Practice RDGW (Remote Desktop Gateway) lab in a Linux environment.
+* Complete Module 2 and begin reviewing Module 3.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2   | - Continue learning and exploring AWS services | 04/27/2026 | 04/27/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Test SSH to private instance using Instance Connect Endpoint (connecting to private instance without going through a public instance) <br> - Practice lab connect RDGW in Linux environment (using freerdp) <br> - Test DNS Resolution (test DNS name resolution) <br> - Clean up resources to prepare for the next lab | 04/28/2026 | 04/28/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Complete the final lab in Module 2 and review the theory of Module 3 | 05/01/2026 | 05/01/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
+*(Days 1, 4, 5 are 4/30 and 5/1 – national holidays)*
 
 ### Week 2 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Mastered SSH connection to private instances through Instance Connect Endpoint without requiring a bastion host/public instance.
 
-* Successfully created and configured an AWS Free Tier account.
+* Successfully completed the Remote Desktop Gateway (RDGW) lab on a Linux environment using FreeRDP.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Verified correct DNS Resolution behavior within a VPC environment.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Cleaned up AWS resources after each lab to avoid unnecessary costs.
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Completed the final lab of Module 2 and acquired an overview of Module 3 content to prepare for the following week.

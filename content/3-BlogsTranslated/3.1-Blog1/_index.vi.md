@@ -1,6 +1,6 @@
 ---
 title: "Blog 1"
-date: 2024-01-01
+date: 2026-06-30
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
@@ -9,118 +9,88 @@ pre: " <b> 3.1. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Tự động hóa viễn thông quy mô hàng triệu thiết bị với Managed Red Hat Ansible Automation Platform (AAP) và Red Hat OpenShift Service on AWS (ROSA)
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+Nếu mọi người đang làm trong ngành liên quan đến viễn thông hoặc đang vận hành những hệ thống có số lượng thiết bị đầu cuối khổng lồ lên tới hàng triệu node như router gia đình, modem hay broadband gateway, việc cập nhật cấu hình hay nâng cấp firmware đồng loạt mà không làm nghẽn hệ thống luôn là một bài toán cực kỳ đau đầu.
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
-
----
-
-## Hướng dẫn kiến trúc
-
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
-
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Hôm nay mình muốn chia sẻ với mọi người một kiến trúc rất hay được lược dịch và bổ sung chi tiết từ AWS Architecture Blog, giải quyết bài toán quy mô siêu khủng này bằng cách kết hợp bộ đôi Managed Red Hat Ansible Automation Platform (AAP) trên AWS và Red Hat OpenShift Service on AWS (ROSA).
 
 ---
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+## Điểm Mấu Chốt: Tách Biệt Hoàn Toàn Mặt Điều Khiển (Control Plane) Và Mặt Thực Thi (Execution Plane)
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Các hệ thống quản lý truyền thống thường gom cả cụm điều khiển (giao diện, API) và cục thực thi (chạy lệnh) vào chung một hạ tầng máy chủ. Khi mọi người ra lệnh cho hàng trăm ngàn thiết bị cùng lúc, lượng tiến trình tăng đột biến sẽ chiếm sạch tài nguyên, gây treo luôn cả giao diện quản lý của kỹ sư.
 
----
+Với kiến trúc hiện đại này:
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+- **Control Plane**: AAP trên AWS đóng vai trò trung tâm (chỉ xử lý giao diện UI, API và điều phối). Cụm điều khiển này sẽ đồng bộ động danh sách thiết bị (Inventory) từ các nguồn bên ngoài như hệ thống CMDB hoặc Cloud Providers, đồng thời đồng bộ kịch bản tự động hóa (Playbooks) từ các kho quản lý mã nguồn tập trung như GitHub.
+- **Execution Plane**: Việc chạy các kịch bản Ansible Playbook nặng nhọc sẽ được đẩy hết sang các Pod container (gọi là Container Groups trong Kubernetes) chạy trên cụm ROSA.
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Khi cao điểm nổ ra, mặt thực thi có thể phình to thoải mái qua giao thức IPv4/IPv6 tới các gateway thiết bị, trong khi mặt điều khiển của mọi người vẫn phản hồi mượt mà.
+
+### Kiến trúc lõi tự động hóa cấp cao
+
+![Kiến trúc lõi tự động hóa cấp cao](/images/blogs/blog1-Picture1.png)
 
 ---
 
-## The pub/sub hub
+## Các Công Nghệ Cốt Lõi
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+Kiến trúc này được xây dựng trên hai thành phần nền tảng:
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+- **Ansible Automation Platform (AAP) Service on AWS**: Được cung cấp dưới dạng dịch vụ quản lý hoàn toàn (managed service) thông qua AWS Marketplace, AAP đóng vai trò là công cụ tự động hóa trung tâm và sở hữu kiến trúc phân tán tách biệt hoàn toàn control plane và execution plane. Điều này cho phép mở rộng độc lập năng lực tự động hóa, tăng cường bảo mật và thực thi nhanh hơn, đáng tin cậy hơn trên các môi trường phân tán địa lý. Việc triển khai AAP managed service trực tiếp qua AWS Marketplace cũng giúp hợp nhất hóa đơn trực tiếp vào tài khoản AWS và tối ưu hóa chi tiêu cam kết đám mây.
+- **Red Hat OpenShift Service on AWS (ROSA)**: ROSA là một nền tảng ứng dụng được quản lý hoàn toàn, cung cấp lộ trình nhanh nhất để xây dựng môi trường sẵn sàng cho sản xuất (production-ready). Được hợp tác phát triển và hỗ trợ bởi Red Hat và AWS, ROSA quản lý toàn bộ hạ tầng Kubernetes/OpenShift bên dưới để các đội ngũ phát triển có thể tập trung vào việc viết Ansible playbooks thay vì phải vá lỗi hay bảo trì hạ tầng.
 
 ---
 
-## Core microservice
+## Hạ Tầng Đỉnh Cao: Thiết Kế Đa Vùng (Multi-Region) & Stateless Với Amazon S3
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+Để gánh được quy mô hàng triệu endpoint trên toàn quốc, hệ thống không chỉ chạy ở một chỗ. Kiến trúc này triển khai Red Hat OpenShift Service on AWS (ROSA) trên nhiều vùng địa lý của AWS (Multi-Region) như `us-east-1`, `us-west-1`, `us-west-2`. Ở mỗi vùng, các Worker Nodes chịu trách nhiệm thực thi lại tiếp tục được phân bổ đều trên 3 Vùng sẵn sàng độc lập (Availability Zones: AZ-A, AZ-B, và AZ-C) để đảm bảo tính sẵn sàng cao (High Availability), đứt cáp hay sập một zone cũng không sợ chết hệ thống.
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+Đặc biệt, để giữ cho cụm AAP luôn nhẹ nhàng và phi trạng thái (stateless), toàn bộ dữ liệu quản lý nặng nề được offload hoàn toàn sang Amazon Simple Storage Service (S3) Buckets. S3 sẽ là nơi lưu trữ và phân phối các Ansible Content Collection cũng như các Container Images của Automation Execution Environments.
 
----
+### Đi sâu vào kiến trúc: Đa vùng, sẵn sàng cao trên ROSA
 
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+![Đi sâu vào kiến trúc: Đa vùng, sẵn sàng cao trên ROSA](/images/blogs/blog1-Picture2.png)
 
 ---
 
-## Staging ER7 microservice
+## Cơ Chế Co Giãn Tự Động Và Tối Ưu Chi Phí Theo Thời Gian Thực
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Đây là điểm đáng tiền nhất của giải pháp. Thay vì phải duy trì một dàn máy chủ khủng để phòng hờ cho những ngày nâng cấp hệ thống rồi bỏ không vào ngày bình thường, sự kết hợp giữa ROSA và AWS giúp tối ưu chi phí tuyệt đối theo mô hình dùng bao nhiêu trả bấy nhiêu.
+
+Hãy nhìn vào timeline thực tế của một đợt nâng cấp định kỳ:
+
+- **09:00 AM** (Trạng thái bình thường): Hệ thống chỉ chạy đúng 3 máy chủ EC2 (Worker Nodes) để giám sát nhẹ nhàng, chi phí giữ ở mức tối thiểu.
+- **09:01 AM** (Vào giờ cao điểm): Lịch nâng cấp "Firmware Tuesday" được kích hoạt đồng loạt cho 1,000 thiết bị home router.
+- **09:02 AM** (Bùng nổ tiến trình): Để xử lý lượng lớn kết nối song song (dựa trên cấu hình fork), AAP yêu cầu sinh ra ngay lập tức 200 Pod thực thi trên Kubernetes.
+- **09:05 AM** (Tự động mở rộng ngầm): Vì 3 máy chủ ban đầu đã full tài nguyên, các Pod mới rơi vào trạng thái Pending. Ngay lập tức, tính năng ROSA Cluster Autoscaler phát hiện ra và gọi AWS bật thêm các máy chủ EC2 mới ở nền để gánh tải. Công việc được xử lý mượt mà, không lo nghẽn mạch.
+- **09:30 AM** (Nhiệm vụ hoàn thành): Chiến dịch nâng cấp firmware thành công, 200 Pod thực thi tự động bị hủy bỏ.
+- **09:45 AM** (Tự động thu nhỏ): Hệ thống nhận thấy các máy chủ EC2 mới bật thêm giờ đã trống rỗng. ROSA Metrics Server sẽ tự động hạ tải và tắt chúng đi, đưa hạ tầng về lại trạng thái 3 máy chủ ban đầu.
+
+Kết quả là doanh nghiệp chỉ phải trả tiền cho lượng máy chủ phát sinh đúng trong vòng mấy chục phút cao điểm đó chứ không cần phải nuôi hệ thống chạy hết công suất 24/7.
 
 ---
 
-## Tính năng mới trong giải pháp
+## Vũ Khí Bí Mật: Đẩy Logs Sang Hệ Thống OLAP Để Huấn Luyện AI / Operations LLM
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Chạy xong hàng triệu thiết bị thì lượng log sinh ra là khổng lồ. Kiến trúc này không lưu log theo kiểu truyền thống dễ gây nghẽn I/O. Toàn bộ dữ liệu thực thi, log và metrics từ AAP sẽ được đẩy liên tục vào một cơ sở dữ liệu OLAP (Online Analytical Processing) phân tán, chuyên dụng cho phân tích thời gian thực và log aggregation như Grafana / Grafana Loki.
+
+Bên cạnh việc giúp các kỹ sư có Dashboard tường minh để debug, điểm "đắt giá" nhất ở đây là nguồn dữ liệu log sạch và khổng lồ này sẽ được dùng làm nguyên liệu đầu vào để huấn luyện các mô hình AI/LLM chuyên dụng cho vận hành (Operations LLM Mode). Trong tương lai, chính AI sẽ tự học từ các log này để tự động phát hiện lỗi và đưa ra giải pháp tự sửa lỗi (Self-healing) cho mạng lưới viễn thông.
+
+---
+
+## Những Lợi Thế Vượt Trội Khác So Với Cách Làm Cũ
+
+Bên cạnh việc co giãn linh hoạt, kiến trúc này giải quyết triệt để bài toán xung đột thư viện (dependencies) giữa các thiết bị khác nhau. Mỗi kịch bản tự động hóa được đóng gói gọn gàng thành một Container Image riêng (Execution Environment), chạy xong tự xóa sạch, không để lại rác hay làm ảnh hưởng đến các tiến trình khác.
+
+Đồng thời, vì cả AAP và ROSA đều là các dịch vụ được quản lý hoàn toàn (Managed Services) phối hợp bởi Red Hat và AWS, toàn bộ gánh nặng về vá lỗi hệ điều hành, cấu hình mạng network layer hay duy trì hạ tầng đều được giảm bớt cho đội ngũ vận hành. Kỹ sư chỉ cần tập trung vào việc viết Playbook để cấu hình thiết bị.
+
+Để bảo vệ túi tiền của doanh nghiệp, mọi người hoàn toàn có thể đặt các hàng rào kiểm soát (Fences) như:
+
+- **Kubernetes Resource Quotas**: Giới hạn cứng số lượng CPU tối đa mà AAP được phép chiếm dụng trong namespace.
+- **AWS Service Quotas**: Giới hạn trần số lượng instance EC2 (ví dụ dòng m5.xlarge) được phép bật lên trong một Region, tránh trường hợp kịch bản tự động bị lỗi vòng lặp vô hạn làm tăng hóa đơn ngoài ý muốn.
+
+**Nguồn:** [AWS Architecture Blog](https://aws.amazon.com/vi/blogs/ibm-redhat/scaling-telco-automation-to-millions-of-devices-with-managed-red-hat-ansible-automation-platform-aap-on-aws-and-red-hat-openshift-service-on-aws-rosa/)
+
+**Bài viết trên AWS Study Group:** [AWS Architecture Blog](https://www.facebook.com/share/p/1Uaej3AE3d/)

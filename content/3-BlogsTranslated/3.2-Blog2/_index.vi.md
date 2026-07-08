@@ -1,127 +1,78 @@
 ---
 title: "Blog 2"
-date: 2024-01-01
-weight: 1
+date: 2026-07-02
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-
 {{% notice warning %}}
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Giới thiệu Dashboard Tổng quan Traffic của AWS WAF
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+Hôm nay mình muốn chia sẻ về một bản cập nhật cực kỳ hữu ích giúp anh em vận hành hệ thống nhàn hơn rất nhiều: Dashboard tổng quan traffic của AWS WAF.
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
-
----
-
-## Hướng dẫn kiến trúc
-
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
-
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Đối với anh em làm bảo mật mạng, việc bảo vệ uptime cho ứng dụng đòi hỏi phải liên tục theo dõi baseline traffic và điều tra các IP đáng ngờ. Bài toán đặt ra là làm sao mở rộng quy mô ứng dụng mà không cần phải "phình to" đội ngũ SOC (Security Operations Center). Để giải quyết "nỗi đau" này, AWS WAF đã ra mắt dashboard tổng quan về traffic, giúp anh em đưa ra quyết định nhanh chóng và chính xác.
 
 ---
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+## Dashboard này có gì đặc biệt?
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Điểm đáng giá nhất là nó hoàn toàn miễn phí và có sẵn mặc định, anh em không cần tốn công setup.
 
----
+Dashboard cung cấp cái nhìn gần như realtime về các metric từ CloudWatch mà WAF thu thập được. Anh em có thể xem tổng request, request bị chặn/được phép, so sánh traffic bot và non-bot, hay top 10 rule đang hoạt động mạnh nhất. Đặc biệt, công cụ Sampled requests giờ đã được tách thành một tab riêng, cho phép xem chi tiết 100 request khớp rule và 100 request áp dụng action mặc định trong 3 giờ gần nhất.
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+Nó phân loại request với bảng phân tích chi tiết (loại tấn công, loại thiết bị, quốc gia). Ví dụ, nếu ứng dụng của anh em chỉ dành cho Desktop ở Việt Nam, nhưng lại thấy traffic từ Mobile ở Pháp tăng vọt, anh em có thể quyết định chặn ngay lập tức.
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+### AWS WAF Traffic Overview Dashboard
+
+![AWS WAF Traffic Overview Dashboard](/images/blogs/blog2-Picture1.png)
+*Hình 1: Dashboard tổng quan traffic của AWS WAF đóng vai trò như một giao diện quản lý tập trung.*
 
 ---
 
-## The pub/sub hub
+## Use Case 1: Phân tích Pattern và "Bắt bệnh" hệ thống
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+Không chỉ để xem cho đẹp, anh em hãy dùng dashboard để săn lùng các đợt tăng vọt (spike) bất thường. Giả sử bình thường hệ thống nhận 2.000 request/phút, nay bỗng nhảy lên 10.000 request/phút kèm theo loại thiết bị không mong muốn, đó là tín hiệu để điều tra ngay.
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+Nếu dashboard hiển thị một rule đang phải chặn một lượng lớn traffic, nó sẽ chỉ ra rõ hệ thống đang bị nhắm mục tiêu bằng một vector tấn công cụ thể.
 
----
+### Hành động tiếp theo sau khi phân tích:
 
-## Core microservice
-
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
-
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+- **Tinh chỉnh rule WAF**: Chỉnh sửa regex để giảm nhận diện nhầm (false positives) hoặc bỏ lọt (false negatives).
+- **Chặn IP tự động**: Sử dụng danh sách Amazon IP reputation list để auto-chặn các IP độc hại.
+- **Xử lý DDoS**: Monitor IP nguồn và dùng rate-based rules để cắt đuôi các đợt tăng vọt request.
 
 ---
 
-## Front door microservice
+## Use Case 2: Theo dõi và Tối ưu Bot Control
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+Nếu anh em đang dùng AWS WAF Bot Control, dashboard này sẽ cho thấy rõ bao nhiêu % traffic đến từ Bot (scraper, crawler, status monitors...).
 
----
+- **Giai đoạn đầu (onboarding)**: Anh em nên bật các rule group Bot Control ở chế độ Count và dùng dashboard để xem có traffic hợp lệ nào bị gán nhãn nhầm không (từ đó thêm rule exception).
+- **Xử lý bot tinh vi**: AWS WAF sẽ dùng kỹ thuật browser fingerprinting, thử thách ngầm hoặc CAPTCHA và gán Token. Bảng Token status trên dashboard sẽ giúp anh em theo dõi lượng request thiếu Token hoặc Token không hợp lệ. Từ đó, anh em có thể viết rule chạy ngay sau nhóm managed rule để chặn đứng hoặc giới hạn tốc độ (rate limit) các request không vượt qua được bài kiểm tra bot này.
 
-## Staging ER7 microservice
+### Theo dõi số liệu Bot Control trên Dashboard
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+![Theo dõi số liệu Bot Control trên Dashboard](/images/blogs/blog2-Picture2.png)
+*Hình 2: Các chỉ số chi tiết về Bot traffic trên AWS WAF Dashboard.*
 
 ---
 
-## Tính năng mới trong giải pháp
+## So sánh nhanh: WAF Dashboard vs CloudFront Security Dashboard
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Nhiều anh em thắc mắc dùng cái nào thì tốt hơn:
+
+- **AWS WAF Traffic Overview Dashboard**: Dành cho anh em cần phân tích sâu (investigate), tìm hiểu pattern traffic để tinh chỉnh rule bảo mật chi tiết.
+- **CloudFront Security Dashboard**: Dành cho anh em muốn quản lý chung cả phân phối ứng dụng và bảo mật cơ bản trên một màn hình duy nhất mà không cần chuyển console.
+
+---
+
+## Tổng kết
+
+Dashboard mới này thực sự giúp anh em bớt đi việc phải "đoán mò" khi phân tích traffic. Về chi phí, dashboard được cung cấp miễn phí, anh em chỉ trả phí lưu trữ log cho CloudWatch nếu bật full logging.
+
+**Nguồn:** [AWS Security Blog](https://aws.amazon.com/blogs/security/introducing-the-aws-waf-traffic-overview-dashboard/)
+
+**Bài viết trên AWS Study Group:** [AWS Security Blog](https://www.facebook.com/groups/awsstudygroupfcj/posts/2202070817224545/)

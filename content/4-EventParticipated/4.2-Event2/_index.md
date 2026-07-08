@@ -1,6 +1,6 @@
 ---
 title: "Event 2"
-date: 2024-01-01
+date: 2026-04-20
 weight: 1
 chapter: false
 pre: " <b> 4.2. </b> "
@@ -10,117 +10,66 @@ pre: " <b> 4.2. </b> "
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
 {{% /notice %}}
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Summary Report: First Cloud AI Journey Meetup
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+The event was organized with the core goal of bridging the gap between academic knowledge and real-world work at multinational corporations (MNCs). Specifically:
+- **Career Mindset Orientation**: Helping final-year students (years 3-4) prepare their mindset ahead of shifting recruitment demands in the AI era.
+- **Sharing Real-world Experience**: Providing multi-dimensional perspectives on roles such as Data Analytics, DevOps, and AI Engineering through real stories from professionals working at major firms like Endava, Kamereo, and Colgate-Palmolive.
+- **Building a Tech Community**: Introducing growth roadmaps through the AWS Student Builder Group and AWS Community Builder programs to support learners from beginners to experts.
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Mr. Dat Pham** - Data Analytics Engineer
+- **Mr. Cuong Nguyen** - Process Engineer
+- **Danh Hoang Hieu Nghi** - AI Engineer, AWS Community Builder & AWS Student Builder Group Leader
+- **Trong H. Truong** - DevOps Engineer at Endava Vietnam
+- **Dinh Trung Kien** & **Nguyen Minh Tho** - Presenting the technical solution: "A scalable URL shortening service on AWS"
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### The Reality of the Data Analytics Field
+- Data Analytics work is not identical at every company. At Kamereo, the focus is on building Dashboards to track daily operational performance; whereas at Colgate-Palmolive, it centers on analyzing IoT machinery data to optimize production processes.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+#### The "5-Step" Path of a Professional
+- The roadmap of personal capability development goes through 5 stages:
+  1. **Follower** (The executor)
+  2. **Learner** (The proactive learner)
+  3. **Problem Solver** (The problem resolver)
+  4. **System Thinker** (The system mind)
+  5. **Super Star** (The visionary leader)
 
-#### Transitioning to modern application architecture – Microservices
+#### The True Essence of DevOps
+- DevOps is not just about using tools like Docker or Kubernetes (K8s); its core essence is understanding how applications run, automating repetitive tasks, and ensuring system stability.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+#### International Corporate Culture
+- **No-Blame Post-Mortem**: When technical issues occur, focus on investigating and repairing system weaknesses instead of searching for individuals to blame.
+- **Caring & Inclusive**: A work environment that respects diversity, equality, and places human factors at the center.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+#### Professional Hiring Process
+- Gaining clarity on real recruitment steps from automated resume screening via ATS, competency assessments, to technical interviews using the **STAR (Situation - Task - Action - Result)** model.
 
 ### Key Takeaways
 
-#### Design Mindset
+#### Value of Fundamentals
+- Technology tools will always change over time, but foundational knowledge of Linux, Networking, and Coding is the timeless value that every engineer needs to master.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+#### Responsible AI Use
+- Leverage the power of AI to elevate personal skills, but absolutely never let AI make you "switch off your brain" during the thinking and problem-solving process.
 
-#### Technical Architecture
+#### Critical Thinking
+- Before rushing to find out *how* to solve a problem, always ask *why* to deeply understand the root cause of the issue.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+### Event Experience & Personal Insights
 
-#### Modernization Strategy
+The event offered an open space for dialogue, presenting real-world lessons on failure and resilience in the tech industry rather than just theoretical lectures.
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+#### Q&A Highlight
+- I directly asked Mr. Trong H. Truong (Endava Vietnam) about effective communication between different teams. I received a profound answer: Communication is an inseparable part of engineering work. To be effective, we must make everything clear and understandable for the whole team and avoid trying to be a "lone hero"—instead focusing on smooth coordination between departments.
 
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
-
-### Event Experience
-
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
-
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+#### Overall Impression
+- The event helped me recalibrate where I stand on my career roadmap and highlighted that connecting with the community (Networking) is a crucial step to expand one's mindset.
 
 #### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+![First Cloud AI Journey Meetup](/images/event-2.jpg)

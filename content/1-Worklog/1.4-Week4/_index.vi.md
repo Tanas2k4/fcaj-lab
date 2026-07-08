@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
+date: 2026-05-11
 weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
@@ -12,48 +12,35 @@ pre: " <b> 1.4. </b> "
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tìm hiểu tổng quan các dịch vụ lưu trữ (Storage) trên AWS.
+* Nghiên cứu chi tiết về Amazon S3: static website hosting và cấu hình CORS.
+* Thực hành các bài lab liên quan đến S3 (Lab 13, 14, 24, 25).
+* Bắt đầu nghiên cứu về site project thực tế sẽ triển khai.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu tổng quát về các dịch vụ lưu trữ (Storage) trên AWS | 11/05/2026 | 11/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Tìm hiểu về Amazon S3: static website hosting, cấu hình CORS | 12/05/2026 | 12/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Thực hành Lab 13 và Lab 14 | 13/05/2026 | 13/05/2026 | [Lab 13](https://000013.awsstudygroup.com/) |
+| 5 | - Thực hành Lab 24 và Lab 25 | 14/05/2026 | 14/05/2026 | [Lab 24](https://000024.awsstudygroup.com/) |
+| 6 | - Tìm hiểu về site project sẽ thực hiện | 15/05/2026 | 15/05/2026 |  |
+| 7 | - Tiếp tục tìm hiểu về site project sẽ thực hiện | 16/05/2026 | 16/05/2026 |  |
 
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hiểu được tổng quan các nhóm dịch vụ lưu trữ (Storage) trên AWS: S3, EBS, EFS, Glacier,...
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Nắm vững kiến thức về Amazon S3:
+  * Cách tổ chức và quản lý bucket, object.
+  * Cách host một static website trên S3.
+  * Cấu hình CORS (Cross-Origin Resource Sharing) để cho phép truy cập tài nguyên từ nhiều nguồn.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Thực hành thành công các bài lab:
+  * Lab 13: Làm quen với S3 và các thao tác cơ bản.
+  * Lab 14: Nâng cao thao tác với S3.
+  * Lab 24: Thực hành với Auto Scaling.
+  * Lab 25: Mở rộng kiến thức Auto Scaling.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Bắt đầu tìm hiểu và phân tích yêu cầu của site project thực tế sẽ triển khai trong các tuần tiếp theo.

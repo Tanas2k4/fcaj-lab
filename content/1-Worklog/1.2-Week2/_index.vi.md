@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 2"
-date: 2024-01-01
+date: 2026-04-27
 weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
@@ -12,48 +12,29 @@ pre: " <b> 1.2. </b> "
 
 ### Mục tiêu tuần 2:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tiếp tục tìm hiểu và thực hành các dịch vụ AWS liên quan đến kết nối, bảo mật mạng.
+* Thực hành kết nối SSH vào private instance thông qua Instance Connect Endpoint.
+* Thực hành lab RDGW (Remote Desktop Gateway) trên môi trường Linux.
+* Hoàn thành module 2 và bắt đầu tìm hiểu module 3.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 2 | - Tiếp tục học và tìm hiểu các dịch vụ AWS | 27/04/2026 | 27/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Test SSH đối với private instance kết hợp với cách Instance Connect Endpoint (kết nối với private instance mà không cần thông qua public instance) <br> - Thực hành lab connect RDGW trong môi trường Linux (sử dụng freerdp) <br> - Test thành công DNS Resolution Test (test phân giải DNS) <br> - Dọn dẹp resource chuẩn bị cho lab tiếp theo | 28/04/2026 | 28/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Thực hiện lab cuối trong module 2 và xem lý thuyết module 3 | 01/05/2026 | 01/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
+
+*(Ngày 1, 4, 5 là 30/4 và 1/5 – nghỉ lễ)*
 
 ### Kết quả đạt được tuần 2:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Nắm vững cách kết nối SSH vào private instance thông qua Instance Connect Endpoint mà không cần thông qua bastion host/public instance.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Thực hành thành công lab Remote Desktop Gateway (RDGW) trên môi trường Linux sử dụng FreeRDP.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Kiểm tra và xác nhận hoạt động đúng của DNS Resolution (phân giải tên miền) trong môi trường VPC.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Dọn dẹp tài nguyên AWS sau mỗi bài lab để tránh phát sinh chi phí không cần thiết.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hoàn thành lab cuối của module 2, nắm bắt tổng quan kiến thức module 3 để chuẩn bị cho tuần tiếp theo.

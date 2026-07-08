@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 9"
-date: 2024-01-01
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.9. </b> "
@@ -12,48 +12,23 @@ pre: " <b> 1.9. </b> "
 
 ### Mục tiêu tuần 9:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Báo cáo tiến độ tuần và lập kế hoạch công việc tiếp theo cùng team.
+* Nghiên cứu và thiết lập quy trình tích hợp liên tục (CI) cho Frontend, tiến hành tái cấu trúc lại thư mục/code Frontend.
+* Xây dựng môi trường thử nghiệm cục bộ (local test) cho Backend đồng bộ với môi trường chạy thực tế (Production).
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành |
+| --- | --- | --- | --- |
+| 2 | - Họp nhóm (Meet team) báo cáo tiến độ tuần trước, phân tích các task còn tồn đọng và phân chia công việc trong tuần | 15/06/2026 | 15/06/2026 |
+| 3 | - Nghiên cứu các dịch vụ/phương pháp thiết lập CI (Tích hợp liên tục) cho Frontend | 16/06/2026 | 16/06/2026 |
+| 4 | - Thực hiện cấu trúc lại dự án Frontend (restructure folder/code) để tăng tính rõ ràng và hiệu suất phát triển | 17/06/2026 | 17/06/2026 |
+| 5 | - Thiết kế và xây dựng kịch bản kiểm thử cục bộ cho Backend | 18/06/2026 | 18/06/2026 |
+| 6 | - Thiết lập cấu hình local test cho Backend đảm bảo ăn khớp (match) tối đa với cấu hình môi trường Production | 19/06/2026 | 19/06/2026 |
+| 7 | - Thực hiện chạy thử nghiệm toàn bộ luồng tích hợp và kiểm thử cục bộ, tối ưu mã nguồn dự án | 20/06/2026 | 20/06/2026 |
 
 
 ### Kết quả đạt được tuần 9:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hoàn tất phân công nhiệm vụ và cập nhật tình hình dự án định kỳ.
+* Thiết lập thành công luồng CI tự động hóa cho dự án Frontend, giúp tối ưu hóa cấu trúc thư mục code rõ ràng và sạch sẽ hơn.
+* Tạo thành công môi trường local test cho Backend giúp mô phỏng chính xác hành vi của môi trường Production, giảm thiểu lỗi khi triển khai thực tế.

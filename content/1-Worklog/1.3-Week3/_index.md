@@ -1,57 +1,37 @@
 ---
 title: "Week 3 Worklog"
-date: 2024-01-01
+date: 2026-05-04
 weight: 1
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Deep dive into EC2 instances and related concepts in Elastic Compute Cloud (EC2) and EC2 Auto Scaling.
+* Complete hands-on labs in Module 3 (Lab 13, Lab 24, Lab 57).
+* Learn about Amazon CloudFront CDN configuration and operation.
+* Participate in the weekly team meeting to report progress and sync work.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - Deep dive into EC2 instances and concepts related to Elastic Compute Cloud and EC2 Auto Scaling | 05/04/2026 | 05/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Practice labs in Module 3 including Lab 13 and Lab 24 | 05/05/2026 | 05/05/2026 | [Lab 13 - EC2](https://000013.awsstudygroup.com/)<br>[Lab 24 - Auto Scaling](https://000024.awsstudygroup.com/) |
+| 4 | - Team meeting: all members report progress and resolve issues to align the project flow | 05/06/2026 | 05/06/2026 |  |
+| 5 | - Read and reference additional lab materials | 05/07/2026 | 05/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Complete Lab 57 <br> - Learn about Amazon CloudFront configuration and operation | 05/08/2026 | 05/08/2026 | [Lab 57 - CloudFront](https://000057.awsstudygroup.com/) |
+| 7 | - Weekly knowledge review meeting and orientation for the next week <br> - Watch reference videos to prepare for Module 4 | 05/09/2026 | 05/09/2026 |  |
 
 
 ### Week 3 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Mastered in-depth knowledge of EC2 and Auto Scaling Groups (ASG) to automatically adjust the number of instances based on load.
+* Successfully completed Module 3 labs including Lab 13 and Lab 24.
+* Synced work progress with the team and resolved technical issues to ensure the project is on track.
+* Completed Lab 57 and understood how to configure Amazon CloudFront (CDN) to optimize the speed of global static/dynamic content delivery.
+* Consolidated knowledge from the week and referenced video materials to prepare for Module 4.

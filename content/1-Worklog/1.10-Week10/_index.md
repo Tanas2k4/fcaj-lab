@@ -1,57 +1,35 @@
 ---
 title: "Week 10 Worklog"
-date: 2024-01-01
-weight: 2
+date: 2026-06-22
+weight: 1
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}} 
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
 
 ### Week 10 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Hold a periodic team meeting to evaluate progress and plan the next tasks.
+* Resolve merge conflicts arising from combining multiple working branches and finalize/optimize project features.
+* Refine and improve the user interface (UI/UX) and integrate AWS S3 for data storage.
+* Research how to integrate AWS SES for email notifications and explore server migration options.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date |
+| --- | --- | --- | --- |
+| 2 | - Team meeting to report on the previous week's progress and distribute detailed tasks for each member | 06/22/2026 | 06/22/2026 |
+| 3 | - Handle and resolve code conflicts (merge conflicts) arising from combining multiple working branches | 06/23/2026 | 06/23/2026 |
+| 4 | - Focus on completing the core features of the project | 06/24/2026 | 06/24/2026 |
+| 5 | - Improve the user interface (UI/UX) | 06/25/2026 | 06/25/2026 |
+| 6 | - Integrate AWS S3 storage service for the project and research AWS SES (Simple Email Service) integration for email notifications | 06/26/2026 | 06/26/2026 |
+| 7 | - Research and explore server migration solutions and procedures | 06/27/2026 | 06/27/2026 |
 
 
 ### Week 10 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Productive team meeting with unified progress tracking and clear task distribution for each member.
+* Successfully resolved code merge conflicts, stabilizing the main branch; completed core features and improved the user interface.
+* Successfully integrated AWS S3 for project resource storage, mastered the AWS SES operation mechanism, and identified a feasible server migration plan.

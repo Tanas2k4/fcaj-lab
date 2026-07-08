@@ -1,6 +1,6 @@
 ---
 title: "Blog 1"
-date: 2024-01-01
+date: 2026-06-30
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
@@ -9,118 +9,100 @@ pre: " <b> 3.1. </b> "
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Scaling telco automation to millions of devices with Managed Red Hat Ansible Automation Platform (AAP) on AWS and Red Hat OpenShift Service on AWS (ROSA)
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+Managing a nationwide telecommunications network requires handling millions of customer endpoints. Relying on manual management or legacy scripting cannot keep up with the demand for regular updates, monitoring, and troubleshooting.
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
-
----
-
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+In this blog post, we shall explore how Managed Red Hat Ansible Automation Platform (AAP) on AWS, while running the execution nodes on Red Hat OpenShift Service on AWS (ROSA), provides an elastic, highly scalable automation solution for managing up to millions of home router broadband gateways, modem-router combos, broadband gateways, and wireless routers.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## The Challenge: Visualizing the Customer Service Architecture
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+To grasp the scope of the challenge, we must first examine the network edge. The customer service infrastructure originates at the Service Provider Data Center. Here, the Optical Line Terminal (OLT) aggregates the fiber connections from millions of individual “home router broadband gateways.” These gateways are a combination of Optical Network Terminal (ONT) and external home routers and/or an all-in-one hub device (which serves as both an ONT and a router, often with integrated wireless backup). This vast network of connections ultimately reaches end-user devices via WiFi and Ethernet. Managing the lifecycle, data collection, monitoring, and troubleshooting for millions of deployed home router broadband gateways is a constant and demanding requirement.
+
+### High-Level Automation Core Architecture
+
+![High-Level Automation Core Architecture](/images/blogs/blog1-Picture1.png)
 
 ---
 
-## Technology Choices and Communication Scope
+## The Core Technologies
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+This architecture is built on two foundational components:
 
----
+- **Ansible Automation Platform (AAP) Service on AWS**: Available as a managed service via the AWS Marketplace, AAP serves as the central automation engine, and has a distributed architecture strictly separating the control plane from the execution plane. This separation allows for independent scaling of automation capacity, improved security, and faster, more reliable execution across geographically distributed environments. Deploying the AAP managed service natively through the AWS marketplace offers unified billing, allowing organizations to bill directly through their AWS accounts and utilize existing cloud committed spend.
+- **Red Hat OpenShift Service on AWS (ROSA)**: ROSA is a fully managed, turnkey application platform that provides the recommended, expedited route to a production-ready environment. Jointly engineered and supported by Red Hat and AWS, ROSA manages the underlying OpenShift/Kubernetes “plumbing” so your teams can focus on writing Ansible playbooks and innovating, rather than patching infrastructure.
 
-## The Pub/Sub Hub
+To manage this vast fleet of home router broadband gateways, the architecture relies on Ansible Automation Platform Service on AWS to provide the Automation Orchestration and Red Hat OpenShift Service on AWS (ROSA) to provide the scalable and cost efficient infrastructure to host the Ansible execution on-demand.
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+At a high level, AAP dynamically integrates with third-party systems, pulling inventory data from external sources (cloud providers, CMDB, etc.), and syncing its automation playbooks via a Version Control Code Repository, such as GitHub.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+When Ansible jobs are triggered, AAP sends the Ansible workload to Execution Node Container Groups in OpenShift clusters. These PODs run the Ansible Playbooks, interacting with home router broadband gateways via IPv4 and/or IPv6 to perform configuration changes, data collection, and management tasks.
+
+To ensure total visibility and full analytics (e.g., train your operations LLM Mode), all execution data, logs, and metrics generated by AAP are continuously ingested into a distributed OLAP (Online Analytical Processing) database designed for real-time analytics and log aggregation systems such as Grafana / Grafana Loki.
 
 ---
 
-## Core Microservice
+## Deep Dive: Scalable, Resilient, Multi-Region Architecture on ROSA
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+Scaling an automation platform to hit millions of endpoints requires robust, distributed infrastructure. By utilizing Red Hat OpenShift Service on AWS (ROSA), organizations get a fully managed environment that handles complex scale.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+In this detailed, multi-region architecture, the ROSA deployment happens at each AWS geographic region (e.g., us-east-1, us-west-1, and us-west-2). Within those regions, the infrastructure is heavily distributed across three Availability Zones (AZ-A, AZ-B, and AZ-C) designed to provide high availability for AAP Execution OpenShift pods.
 
----
+The key to this architecture’s efficiency is the separation of automation control and execution:
 
-## Front Door Microservice
+- **The Control Plane**: Ansible Automation Platform Service on AWS will provide the Red Hat AAP Controllers (handling the UI and API requests) that sit centrally within the regions to govern the environment.
+- **The Execution Plane**: On Red Hat OpenShift Service on AWS (ROSA), OpenShift Worker pools dedicated to the AAP Execution Plane are distributed across the availability zones, scaling out horizontally to execute Ansible content and directly connect with the home router broadband gateways.
+- **Externalized AWS Services**: To maintain stateless and lightweight AAP clusters, the architecture offloads data management to native AWS services. You can use Amazon Simple Storage Service (S3) Buckets for scalable object storage to store and manage automation content such as Ansible Content Collection and Automation Execution Environments container images.
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+### Deep Dive: Scalable, Resilient, Multi-Region Architecture on ROSA
+
+![Deep Dive: Scalable, Resilient, Multi-Region Architecture on ROSA](/images/blogs/blog1-Picture2.png)
 
 ---
 
-## Staging ER7 Microservice
+## The Magic: Scaling Execution Environments During Peak Bursts
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+The true value of running AAP on ROSA becomes apparent during massive “automation bursts,” such as scheduling a firmware upgrade for thousands of home router broadband gateways. AAP utilizes a split architecture, meaning Automation Controller pods handle incoming API/UI requests, while Execution Node pods (known on Kubernetes as “container groups”) handle the heavy lifting of running the actual Ansible playbooks.
+
+When a massive scheduled job hits, the Horizontal Pod Autoscaler (HPA) instantly detects CPU and memory spikes, and AAP begins spinning up more container pods. But what happens if the underlying physical OpenShift worker nodes (Amazon EC2 instances) run out of capacity?
+
+This is where native scaling mechanisms in ROSA step in to save the day:
+
+- **09:00 AM**: The cluster is operating normally under a quiet load, running just 3 worker nodes.
+- **09:01 AM**: A scheduled “Firmware Tuesday” job initiates for 1,000 home router broadband gateways.
+- **09:02 AM**: To handle the concurrency (based on configured “fork” settings), AAP requests 200 execution pods.
+- **09:05 AM**: Because the existing worker nodes are full, the new pods enter a “Pending” state. The ROSA Cluster Autoscaler detects these pending pods and automatically provides the necessary additional EC2 / OpenShift worker nodes in the background. The pods are instantly scheduled as soon as the nodes are ready.
+- **09:30 AM**: The firmware upgrades complete, and the 200 container pods are destroyed.
+- **09:45 AM**: The ROSA metrics server observes that the newly created OpenShift worker nodes are now empty. It automatically terminates them, reducing costs on your AWS bill.
+
+The scaling is only limited by two “fences” you set:
+
+- **Kubernetes Resource Quotas**: You can set a Hard Limit on the namespace where AAP runs (e.g., “This team or AAP cannot use more than 200 CPUs total”). If you hit this, AAP will wait for pods to finish before starting new ones.
+- **AWS Service Quotas**: Even if ROSA wants to scale, it is bound by your AWS account limits (e.g., maximum number of m5.xlarge instances allowed in a region).
 
 ---
 
-## New Features in the Solution
+## The Secret Weapon: Push Logs to OLAP System for AI/Operations LLM Training
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Running jobs on millions of devices generates a massive volume of logs. This architecture does not save logs in the traditional way, which can easily cause I/O bottlenecks. Instead, all execution data, logs, and metrics generated by AAP are continuously ingested into a distributed OLAP (Online Analytical Processing) database designed for real-time analytics and log aggregation systems, such as Grafana / Grafana Loki.
+
+Besides providing engineers with a clear dashboard for debugging, the most valuable point here is that this clean and massive log dataset is used as input to train specialized operations AI/LLM models (Operations LLM Mode). In the future, the AI will learn from these logs to automatically detect issues and suggest self-healing actions for the telecommunication network.
+
+---
+
+## Key Advantages Over Traditional Approaches
+
+Besides flexible scaling, this architecture completely solves dependency conflicts across different hardware generations. Each automation scenario is packaged cleanly into its own Container Image (Execution Environment), which is destroyed after execution, leaving no residue and not impacting other processes.
+
+Furthermore, since both AAP and ROSA are fully managed services coordinated by Red Hat and AWS, the operational burden of OS patching, network layer configurations, and infrastructure maintenance is offloaded from the operations team. Engineers can focus entirely on writing playbooks to configure devices.
+
+To protect the business budget, you can set the following control barriers (Fences):
+
+- **Kubernetes Resource Quotas**: Set a hard limit on the namespace where AAP runs (e.g., maximum CPU usage).
+- **AWS Service Quotas**: Set account-level limits on the maximum number of specific EC2 instances allowed to launch in a region, avoiding infinite loop billing surprises.
+
+**Source:** [AWS Architecture Blog](https://aws.amazon.com/blogs/ibm-redhat/scaling-telco-automation-to-millions-of-devices-with-managed-red-hat-ansible-automation-platform-aap-on-aws-and-red-hat-openshift-service-on-aws-rosa/)
+
+**Post on AWS Study group:** [AWS Architecture Blog](https://www.facebook.com/share/p/1Uaej3AE3d/)

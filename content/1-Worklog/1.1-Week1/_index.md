@@ -1,57 +1,61 @@
 ---
 title: "Week 1 Worklog"
-date: 2024-01-01
+date: 2026-04-20
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
 
 ### Week 1 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Get familiar with the working environment and team members.
+* Understand basic AWS concepts such as IAM, Billing, CLI, and VPC.
+* Practice environment configuration and deploy basic AWS resources.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - Configure and clean up local machine resources <br> - Meet with the team to discuss, clarify questions, and plan for the week | 04/20/2026 | 04/20/2026 |  |
+| 3 | - Create budgets in Billing and Cost Management <br> - Learn about IAM Users and Groups <br> - Learn about Secret Keys (how to create, purpose, and relationship with other components) | 04/21/2026 | 04/21/2026 | [AWS Budgets](https://000007.awsstudygroup.com/)<br>[AWS IAM](https://000002.awsstudygroup.com/) |
+| 4 | - Complete small task modules to earn additional credits <br> - Connect and configure AWS CLI <br> - Learn basic AWS CLI commands | 04/22/2026 | 04/22/2026 | [AWS CLI](https://000011.awsstudygroup.com/) |
+| 5 | - Learn VPC concepts: <br>&emsp; + Subnet <br>&emsp; + NAT Gateway <br>&emsp; + ... | 04/23/2026 | 04/23/2026 | [Amazon VPC](https://000003.awsstudygroup.com/) |
+| 6 | - Learn about Elastic Load Balancing and Network Load Balancing <br> - Practice: <br>&emsp; + Create a VPC <br>&emsp; + Create 2 public subnets & 2 private subnets <br>&emsp; + Create Security Group <br>&emsp; + Configure Route Table and map with EC2 | 04/24/2026 | 04/24/2026 | [Amazon VPC](https://000003.awsstudygroup.com/) |
+| 7 | - (Not yet updated) |  |  |  |
 
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Got familiar with the working environment, communication processes, and team collaboration.
 
-* Successfully created and configured an AWS Free Tier account.
+* Understood how to manage costs on AWS through:
+  * Creating and monitoring Budgets in Billing and Cost Management.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Grasped basic IAM knowledge:
+  * Differentiated between IAM Users and Groups.
+  * Understood the role of Access Keys and Secret Keys.
+  * Learned how to create and securely manage credentials.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Installed and configured AWS CLI:
+  * Set up Access Key and Secret Key.
+  * Configured the default Region.
+  * Used basic commands to interact with AWS.
 
-* Used AWS CLI to perform basic operations such as:
+* Practiced and reinforced knowledge through small task modules:
+  * Completed several tasks for credit-incentivized accounts.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Understood basic VPC concepts:
+  * Subnet (Public/Private).
+  * NAT Gateway.
+  * Route Table and routing.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Got acquainted with Elastic Load Balancing:
+  * Differentiated between types of Load Balancers (Network Load Balancer, ...).
+
+* Practiced deploying a basic networking system:
+  * Created a complete VPC with 2 public subnets and 2 private subnets.
+  * Configured Security Group.
+  * Set up Route Table and mapped with EC2 instances.

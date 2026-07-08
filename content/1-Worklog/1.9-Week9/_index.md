@@ -1,57 +1,34 @@
 ---
 title: "Week 9 Worklog"
-date: 2024-01-01
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}} 
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
 
 ### Week 9 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Report weekly progress and plan the next tasks with the team.
+* Research and set up a Continuous Integration (CI) pipeline for the Frontend, and restructure the Frontend folder/code.
+* Build a local testing environment for the Backend that matches the Production environment.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date |
+| --- | --- | --- | --- |
+| 2 | - Team meeting to report on previous week's progress, analyze pending tasks, and distribute work for the week | 06/15/2026 | 06/15/2026 |
+| 3 | - Research services/methods for setting up CI (Continuous Integration) for the Frontend | 06/16/2026 | 06/16/2026 |
+| 4 | - Restructure the Frontend project (folder/code restructure) to improve clarity and development performance | 06/17/2026 | 06/17/2026 |
+| 5 | - Design and build local test scenarios for the Backend | 06/18/2026 | 06/18/2026 |
+| 6 | - Set up local test configuration for the Backend to ensure it matches the Production environment as closely as possible | 06/19/2026 | 06/19/2026 |
+| 7 | - Run a full integration and local test flow trial, optimize project source code | 06/20/2026 | 06/20/2026 |
 
 
 ### Week 9 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Completed task assignments and provided periodic project status updates.
+* Successfully established an automated CI pipeline for the Frontend project, with a cleaner and more organized code folder structure.
+* Successfully created a local test environment for the Backend that accurately simulates the Production environment's behavior, minimizing deployment errors.

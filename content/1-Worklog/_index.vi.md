@@ -1,6 +1,6 @@
 ---
 title: "Nhật ký công việc"
-date: 2024-01-01
+date: 2026-07-08
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
@@ -10,31 +10,19 @@ pre: " <b> 1. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-**Trong trang này** bạn sẽ cần giới thiệu worklog của bạn **như thế nào**? Bạn hoàn thành chương trình trong vòng **bao nhiêu tuần**? Bạn **đã làm gì** trong các tuần đó?
+Trang này ghi lại toàn bộ lộ trình thực tập và học tập về điện toán đám mây Amazon Web Services (AWS) trong thời gian 12 tuần (khoảng 3 tháng). Mỗi tuần tập trung nghiên cứu lý thuyết đi đôi với thực hành lab chuyên sâu để làm chủ các dịch vụ AWS quan trọng.
 
+Thông tin tóm tắt nội dung thực hiện theo từng tuần như sau:
 
-Thông thường và cũng là tiêu chuẩn, một worklog được thực hiện trong khoảng 3 tháng (trong suốt thời gian thực tập) với nội dung các tuần như sau:
-
-**Tuần 1:** [Làm quen với AWS và các dịch vụ cơ bản trong AWS](1.1-week1/)
-
-**Tuần 2:** [Làm công việc A...](1.2-week2/)
-
-**Tuần 3:** [Làm công việc B...](1.3-week3/)
-
-**Tuần 4:** [Làm công việc C...](1.4-week4/)
-
-**Tuần 5:** [Làm công việc D...](1.5-week5/)
-
-**Tuần 6:** [Làm công việc E...](1.6-week6/)
-
-**Tuần 7:** [Làm công việc G...](1.7-week7/)
-
-**Tuần 8:** [Làm công việc H...](1.8-week8/)
-
-**Tuần 9:** [Làm công việc I...](1.9-week9/)
-
-**Tuần 10:** [Làm công việc L...](1.10-week10/)
-
-**Tuần 11:** [Làm công việc M...](1.11-week11/)
-
-**Tuần 12:** [Làm công việc N...](1.12-week12/)
+* **Tuần 1:** [Làm quen với AWS, Budget, IAM, CLI và VPC](1.1-Week1/) - Thiết lập tài khoản, theo dõi ngân sách, quản lý quyền truy cập IAM, cấu hình AWS CLI cục bộ và triển khai cấu trúc mạng VPC cơ bản.
+* **Tuần 2:** [Kết nối an toàn đến Private Instance và DNS Resolution](1.2-Week2/) - Thực hành các cơ chế kết nối an toàn (Instance Connect Endpoint, RDGW) đến máy chủ trong subnet riêng tư và kiểm tra phân giải tên miền nội bộ.
+* **Tuần 3:** [EC2 nâng cao, Auto Scaling và CloudFront](1.3-Week3/) - Nghiên cứu sâu về EC2 Auto Scaling, thực hành các lab Module 3 (Lab 13, 24, 57) và tìm hiểu cấu hình Amazon CloudFront CDN.
+* **Tuần 4:** [Dịch vụ lưu trữ AWS và Amazon S3](1.4-Week4/) - Tìm hiểu tổng quan các dịch vụ Storage, nghiên cứu Amazon S3 (static website, CORS) và thực hành các lab liên quan.
+* **Tuần 5:** [Bảo mật và Quản lý định danh nâng cao](1.5-Week5/) - Nghiên cứu IAM nâng cao, AWS Cognito, AWS Organizations, IAM Identity Center, Security Group và AWS Security Hub.
+* **Tuần 6:** [Nghiên cứu công nghệ và Lập kế hoạch dự án](1.6-Week6/) - Tìm hiểu sâu các công nghệ dự kiến dùng trong dự án, tính toán chi phí bằng AWS Pricing Calculator và lên kế hoạch phân chia task.
+* **Tuần 7:** [Triển khai thử nghiệm ứng dụng trên EC2 và RDS](1.7-Week7/) - Ôn tập kiến thức EC2 và RDS, đẩy mã nguồn lên máy ảo và cấu hình môi trường để ứng dụng chạy thành công.
+* **Tuần 8:** [Tích hợp RDS, CloudFront và tham khảo AWS Blogs](1.8-Week8/) - Cấu hình kết nối source code với RDS, tìm hiểu CloudFront và nghiên cứu các blog kỹ thuật trên Amazon Web Services.
+* **Tuần 9:** [Thiết lập CI Frontend và Local Test Backend](1.9-Week9/) - Nghiên cứu và setup CI tự động cho Frontend, tái cấu trúc dự án và xây dựng môi trường local test cho Backend khớp với Production.
+* **Tuần 10:** [Hoàn thiện chức năng, tích hợp S3 và nghiên cứu SES](1.10-Week10/) - Xử lý merge conflict, hoàn thiện các chức năng dự án, cải thiện UI/UX, tích hợp S3 và nghiên cứu giải pháp gửi mail với AWS SES.
+* **Tuần 11:** [Kiểm thử toàn diện và chuyển sang Private Subnet](1.11-Week11/) - Xử lý xung đột nhánh, chuyển server vào subnet private, kiểm thử hệ thống và giám sát toàn bộ các tính năng đã hoàn thiện.
+* **Tuần 12:** [Tổng kết và Báo cáo thực tập](1.12-Week12/) - Tổng hợp toàn bộ kiến thức, hoàn thiện báo cáo và đánh giá kết quả đạt được sau kỳ thực tập.
