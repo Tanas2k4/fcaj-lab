@@ -20,7 +20,7 @@ Trong workshop này, bạn sẽ thực hiện tìm hiểu cách thức triển k
 3. Tại mục **Name and tags**, nhập tên `rookwork-ec2-1` vào trường Name.
 4. Tại mục **Application and OS Images (Amazon Machine Image)**, lựa chọn hệ điều hành **Amazon Linux 2023 AMI** (hoặc AMI phù hợp với dự án của bạn).
 
-![Khởi tạo máy chủ - Bước 1](/images/5-Workshop/ec2-1-launch.png)
+![Khởi tạo máy chủ - Bước 1](/images/5-Workshop/5.4/ec2-1-launch.png)
 
 ---
 
@@ -32,9 +32,9 @@ Trong workshop này, bạn sẽ thực hiện tìm hiểu cách thức triển k
 4. **Auto-assign public IP**: Chọn **Disable** (điều này đảm bảo máy chủ không nhận IP công cộng và nằm hoàn toàn trong mạng nội bộ).
 5. **Firewall (security groups)**: Lựa chọn hoặc tạo mới Security Group cho phép truy cập cổng SSH hoặc cổng dịch vụ từ Bastion host, Application Load Balancer hoặc từ các dải mạng nội bộ thuộc VPC.
 
-![Cấu hình Network Settings](/images/5-Workshop/ec2-1-step2.jpg)
+![Cấu hình Network Settings](/images/5-Workshop/5.4/ec2-1-step2.png)
 
-![Cấu hình Network Settings](/images/5-Workshop/ec2-1-step3.png)
+![Cấu hình Network Settings](/images/5-Workshop/5.4/ec2-1-step3.png)
 
 ---
 
@@ -55,7 +55,7 @@ Trong workshop này, bạn sẽ thực hiện tìm hiểu cách thức triển k
 5. Gán Security Group tương tự hoặc Security Group dành riêng cho private EC2 thứ hai.
 6. Nhấp chọn **Launch instance** để tạo máy chủ.
 
-![Khởi tạo rookwork-ec2-2](/images/5-Workshop/ec2-2-step-1.png)
+![Khởi tạo rookwork-ec2-2](/images/5-Workshop/5.4/ec2-2-step1.png)
 
 ---
 
@@ -65,11 +65,11 @@ Vì cả hai máy chủ EC2 đều nằm trong private subnet, chúng không có
 
 1. Tại danh sách máy chủ EC2, tích chọn máy chủ cần kết nối (ví dụ: `rookwork-ec2-2`) và nhấn nút **Connect** ở góc trên bên phải.
 
-![Kết nối EC2 - Bước 1](/images/5-Workshop/check-connect-ec2-step1.png)
+![Kết nối EC2 - Bước 1](/images/5-Workshop/5.4/check-connect-ec2-step1.png)
 
 2. Chuyển sang tab **Session Manager** và nhấp chọn nút **Connect** màu cam ở góc dưới bên phải để bắt đầu phiên kết nối.
 
-![Kết nối EC2 - Bước 2](/images/5-Workshop/check-connect-ec2-step2.png)
+![Kết nối EC2 - Bước 2](/images/5-Workshop/5.4/check-connect-ec2-step2.png)
 
 ---
 
@@ -83,7 +83,7 @@ Sau khi cửa sổ terminal kết nối thành công, tiến hành thực hiện
 ping -c 3 google.com
 ```
 
-![Kiểm tra môi trường thành công](/images/5-Workshop/check-connect-completed.png)
+![Kiểm tra môi trường thành công](/images/5-Workshop/5.4/check-connect-completed.png)
 #### 2. Kiểm tra các phần mềm/môi trường đã cài đặt
 Chạy các lệnh kiểm tra phiên bản để đảm bảo các công cụ cần thiết phục vụ cho việc triển khai dự án Rookwork đã sẵn sàng:
 

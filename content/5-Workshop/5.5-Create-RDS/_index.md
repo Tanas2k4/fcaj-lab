@@ -26,21 +26,21 @@ Once the network and EC2 instance are ready, start creating the relational datab
 3. Under **Engine options**, select **PostgreSQL**.
 4. Under **Choose a database creation method**, select **Easy create** to use recommended best-practice default configurations.
 
-![Create RDS - Step 1](/images/5-Workshop/create-rds-step1.png)
+![Create RDS - Step 1](/images/5-Workshop/5.5/create-rds-step1.png)
 
 5. Under DB instance size options, select **Free tier** to run a cost-efficient setup (`db.t4g.micro`, 2 vCPUs, 1 GiB RAM, 20 GiB Storage).
 6. **DB instance identifier**: Enter a unique name for your database (e.g., `rookwork-db`).
 7. **Master username**: Default is `postgres`.
 8. **Credentials management**: Choose **Self managed** to define and manage your master user password.
 
-![Create RDS - Step 2](/images/5-Workshop/create-rds-step2.png)
+![Create RDS - Step 2](/images/5-Workshop/5.5/create-rds-step2.png)
 
 9. Under the **Set up EC2 connection - optional** section:
    * Select **Connect to an EC2 compute resource**.
    * Under the **EC2 instance** dropdown, select your application server (e.g., `rookwork-ec2-1` / `i-035c5645906cef43f`).
    * *Note: This option allows Amazon RDS to automatically create and assign appropriate security groups (`rds-ec2-X` for the database and `ec2-rds-X` for the EC2 instance). This automatically permits secure traffic from your EC2 instance to the RDS Database port without requiring manual routing rules.*
 
-![Create RDS - Step 3](/images/5-Workshop/create-rds-step3.png)
+![Create RDS - Step 3](/images/5-Workshop/5.5/create-rds-step3.png)
 
 10. Click **Create database** at the bottom to start provisioning. The process will take a few minutes until the database status changes to **Available**.
 
@@ -86,7 +86,7 @@ Once the RDS database status changes to **Available**, execute the following ste
    *(Replace `<RDS_ENDPOINT>` with the actual RDS instance Endpoint found on the AWS RDS Console details page)*
 4. Enter the master user password configured in Step 2. When the command prompt switches to `postgres=>`, it proves that the EC2 instance has successfully connected to the RDS PostgreSQL database through the VPC internal network.
 
-![Successful RDS connection](/images/5-Workshop/rds-connect-completed.png)
+![Successful RDS connection](/images/5-Workshop/5.5/rds-connect-completed.png)
 
 {{% notice note %}}
 **Note:** The image above illustrates a successful terminal session connection. This test and installation ensure that your application running on EC2 can successfully communicate with and securely store data in the RDS PostgreSQL database.

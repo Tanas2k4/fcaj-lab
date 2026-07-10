@@ -20,7 +20,7 @@ In this workshop, you will learn how to deploy EC2 instances securely inside pri
 3. Under **Name and tags**, enter `rookwork-ec2-1` in the Name field.
 4. Under **Application and OS Images (Amazon Machine Image)**, select **Amazon Linux 2023 AMI** (or the AMI required for your project).
 
-![Launch instance - Step 1](/images/5-Workshop/ec2-1-launch.png)
+![Launch instance - Step 1](/images/5-Workshop/5.4/ec2-1-launch.png)
 
 ---
 
@@ -32,9 +32,9 @@ In this workshop, you will learn how to deploy EC2 instances securely inside pri
 4. **Auto-assign public IP**: Select **Disable** (this guarantees the instance does not receive a public IP address and remains private).
 5. **Firewall (security groups)**: Select or create a security group configured to allow inbound traffic only from the Bastion host, Application Load Balancer, or specific internal VPC ranges.
 
-![Edit Network Settings](/images/5-Workshop/ec2-1-step2.jpg)
+![Edit Network Settings](/images/5-Workshop/5.4/ec2-1-step2.png)
 
-![Edit Network Settings](/images/5-Workshop/ec2-1-step3.png)
+![Edit Network Settings](/images/5-Workshop/5.4/ec2-1-step3.png)
 
 ---
 
@@ -55,7 +55,7 @@ In this workshop, you will learn how to deploy EC2 instances securely inside pri
 5. Assign the same security group or a corresponding private security group.
 6. Launch the instance.
 
-![Launch rookwork-ec2-2](/images/5-Workshop/ec2-2-step-1.png)
+![Launch rookwork-ec2-2](/images/5-Workshop/5.4/ec2-2-step1.png)
 
 ---
 
@@ -65,11 +65,11 @@ Since both EC2 instances are in private subnets, they do not have public IP addr
 
 1. In the EC2 instances list, select the instance you want to connect to (e.g., `rookwork-ec2-2`) and click the **Connect** button at the top right.
 
-![Connect to EC2 - Step 1](/images/5-Workshop/check-connect-ec2-step1.png)
+![Connect to EC2 - Step 1](/images/5-Workshop/5.4/check-connect-ec2-step1.png)
 
 2. Switch to the **Session Manager** tab and click the orange **Connect** button at the bottom right to establish a terminal session.
 
-![Connect to EC2 - Step 2](/images/5-Workshop/check-connect-ec2-step2.png)
+![Connect to EC2 - Step 2](/images/5-Workshop/5.4/check-connect-ec2-step2.png)
 
 ---
 
@@ -82,7 +82,7 @@ To ensure the route table for private subnets redirects outbound traffic to a NA
 ```bash
 ping -c 3 google.com
 ```
-![Environment Check Completed successfully](/images/5-Workshop/check-connect-completed.png)
+![Environment Check Completed successfully](/images/5-Workshop/5.4/check-connect-completed.png)
 
 #### 2. Verify Installed Software / Dependencies
 Run version check commands to ensure the required runtimes and tools for the Rookwork application are installed and ready:
