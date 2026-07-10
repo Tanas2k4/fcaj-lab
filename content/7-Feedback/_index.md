@@ -6,39 +6,50 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud Journey program. This will help the FCJ team improve any shortcomings based on the following aspects:
+Participating in the **First Cloud Journey (FCJ)** program has been an incredibly meaningful learning and working experience. Below is my honest evaluation and feedback after completing the internship:
 
 ### Overall Evaluation
 
 **1. Working Environment**  
-The working environment is very friendly and open. FCJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+The working environment at FCJ is highly dynamic, friendly, and innovation-friendly. Team members are open and always ready to support each other. The professional workspace allowed me to maximize my productivity while developing the mindset of a technology engineer.
 
-**2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+![Dynamic working environment at AWS Vietnam](/images/meetup-2305-2.jpg)
+
+**2. Support from Mentor & Organizer**  
+I received very close guidance from my mentor. Instead of providing direct answers, the mentor guided my thinking process, encouraging me to research and find solutions to challenging problems myself. The organizing team also provided great support in terms of documentation, AWS lab infrastructure, and swift resolution of administrative tasks.
+
+![Enthusiastic support from Mentor and Organizers](/images/help.png)
 
 **3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+My tasks in developing the Rookwork application aligned perfectly with my Software Engineering major. Designing the system architecture, configuring databases on the cloud, and writing backend/frontend code helped me realize the theoretical knowledge accumulated at university.
 
 **4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+This internship provided a huge leap in my professional skills: from mastering core AWS services (VPC, EC2, RDS, S3, CloudFront, Route 53) to implementing CI/CD pipelines (GitHub Actions). Additionally, in the role of Tech Lead, I sharpened my project management, code conflict resolution, and team communication skills.
 
-**5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+**5. Culture & Team Spirit**  
+The sense of responsibility and cohesion here is outstanding. Whether working independently or collaborating, everyone respected each other's ideas and worked toward the common goal of delivering a high-quality product.
 
-**6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+![Cohesive team spirit of the project team](/images/team-work.jpg)
 
----
-
-### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+**6. Internship Policies & Benefits**  
+The program provides clear support policies for interns. Flexible working hours allowed me to balance completing university projects with my tasks in this project. The regular technical seminars were an excellent opportunity to learn from industry experts.
 
 ---
 
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+### Personal Internship Experience
+
+* **What satisfied me most during the internship:**  
+  Being given full ownership to design the system architecture and implement DevOps automation pipelines in a real-world project. Seeing the software developed by our team running smoothly on AWS cloud infrastructure was the most rewarding feeling.
+
+* **What could be improved for future interns:**  
+  Organizing more team bonding activities or cross-sharing sessions between different project teams. This would allow interns to learn about the diverse technologies and solutions other teams are applying.
+
+* **My recommendation for future candidates:**  
+  I would definitely recommend this program to junior students. It is an ideal environment to gain hands-on experience, learn self-research skills, and master leading Cloud services—opportunities that are rarely available to interns elsewhere.
+
+---
+
+### Suggestions & Future Expectations
+
+* **Suggestions for improvement:** Increase the duration or frequency of overall architecture review sessions (Architecture Review) so that teams can learn and get feedback directly from senior AWS engineers.
+* **Future expectations:** I am highly interested in continuing to accompany the program in deeper roles or as a technical co-organizer supporting future cohorts of interns.
