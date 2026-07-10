@@ -18,9 +18,9 @@ pre: " <b> 1.1. </b> "
 | 2   | - Cấu hình và dọn dẹp tài nguyên máy <br> - Meet team để trao đổi, giải đáp thắc mắc và lên kế hoạch cho tuần                                                                                            | 20/04/2026   | 20/04/2026      |  |
 | 3   | - Tạo budgets trong Billing and Cost Management <br> - Tìm hiểu về IAM User và Group <br> - Tìm hiểu về Secret Key (cách tạo, mục đích sử dụng và mối liên hệ với các thành phần khác)                  | 21/04/2026   | 21/04/2026      | [AWS Budgets](https://000007.awsstudygroup.com/)<br>[AWS IAM](https://000002.awsstudygroup.com/) |
 | 4   | - Thực hiện các module nhỏ trong task để kiểm thêm credit <br> - Kết nối và cấu hình AWS CLI <br> - Tìm hiểu các lệnh cơ bản trong AWS CLI                                                              | 22/04/2026   | 22/04/2026      | [AWS CLI](https://000011.awsstudygroup.com/) |
-| 5   | - Tìm hiểu các khái niệm trong VPC: <br>&emsp; + Subnet <br>&emsp; + NAT Gateway <br>&emsp; + ...                                                                                                        | 23/04/2026   | 23/04/2026      | [Amazon VPC](https://000003.awsstudygroup.com/) |
-| 6   | - Tìm hiểu Elastic Load Balancing và Network Load Balancing <br> - Thực hành: <br>&emsp; + Tạo VPC <br>&emsp; + Tạo 2 public subnet & 2 private subnet <br>&emsp; + Tạo Security Group <br>&emsp; + Cấu hình Route Table và mapping với EC2 | 24/04/2026   | 24/04/2026      | [Amazon VPC](https://000003.awsstudygroup.com/) |
-| 7   | - (Chưa cập nhật)|||  |
+| 5   | - Tìm hiểu các khái niệm trong VPC: subnet, NAT Gateway và các thành phần liên quan                                                                                                                      | 23/04/2026   | 23/04/2026      | [Amazon VPC](https://000003.awsstudygroup.com/) |
+| 6   | - Tìm hiểu Elastic Load Balancing và Network Load Balancing <br> - Thực hành: Tạo VPC, subnet (public/private), security group, route table và EC2                                                        | 24/04/2026   | 24/04/2026      | [Amazon VPC](https://000003.awsstudygroup.com/) |
+| 7   | - Học lý thuyết SSH, Key Pair <br> - Thực hành kết nối SSH tới EC2 <br> - Phân biệt các cách truy cập (SSH client, Bastion Host, Session Manager)                                                         | 25/04/2026   | 25/04/2026      |  |
 
 
 ### Kết quả đạt được tuần 1:
@@ -41,7 +41,7 @@ pre: " <b> 1.1. </b> "
   * Sử dụng các lệnh cơ bản để thao tác với AWS.
 
 * Thực hành và củng cố kiến thức thông qua các module nhỏ:
-  * Hoàn thành một số task dành cho tài khoản được khuyến mãi redit.
+  * Hoàn thành một số task dành cho tài khoản được khuyến mãi credit.
 
 * Hiểu các khái niệm cơ bản trong VPC:
   * Subnet (Public/Private).
@@ -55,3 +55,8 @@ pre: " <b> 1.1. </b> "
   * Tạo VPC hoàn chỉnh với 2 public subnet và 2 private subnet.
   * Cấu hình Security Group.
   * Thiết lập Route Table và mapping với EC2 instance.
+
+* Học lý thuyết và thực hành kết nối bảo mật qua SSH:
+  * Hiểu cơ chế hoạt động của Key Pair (khóa công khai và khóa bí mật).
+  * Biết cách sử dụng SSH client để kết nối trực tiếp vào máy chủ EC2.
+  * Phân biệt và hiểu các phương án truy cập an toàn khác như Bastion Host hay AWS Systems Manager Session Manager.

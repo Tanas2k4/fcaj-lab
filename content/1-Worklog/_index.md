@@ -6,9 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 This page records the entire learning and internship journey on Amazon Web Services (AWS) cloud computing over a 12-week period (approximately 3 months). Each week focuses on combining theoretical research with in-depth hands-on labs to master key AWS services.
 

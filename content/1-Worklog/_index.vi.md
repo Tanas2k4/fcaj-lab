@@ -6,9 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 Trang này ghi lại toàn bộ lộ trình thực tập và học tập về điện toán đám mây Amazon Web Services (AWS) trong thời gian 12 tuần (khoảng 3 tháng). Mỗi tuần tập trung nghiên cứu lý thuyết đi đôi với thực hành lab chuyên sâu để làm chủ các dịch vụ AWS quan trọng.
 

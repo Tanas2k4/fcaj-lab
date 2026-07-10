@@ -1,69 +1,157 @@
 ---
-title: "Các bước chuẩn bị"
-date: 2026-07-08
-weight: 2
-chapter: false
-pre: " <b> 5.2. </b> "
+title : "Các bước chuẩn bị"
+date : 2024-01-01 
+weight : 2
+chapter : false
+pre : " <b> 5.2. </b> "
 ---
 
-Để tiến hành sao lưu và di chuyển dữ liệu EBS Cross-Account từ máy trạm **Linux Fedora GNOME**, bạn cần chuẩn bị các thành phần sau:
+Trước khi bắt đầu triển khai hạ tầng AWS cho dự án **Rookwork**, bạn cần đảm bảo các điều kiện tiên quyết sau đây đã được thiết lập đầy đủ.
 
-#### 1. Cài đặt AWS CLI v2 trên Fedora GNOME
+---
 
-Mở Terminal của bạn trên Fedora (GNOME Terminal) và thực hiện các lệnh sau để tải và cài đặt phiên bản mới nhất của **AWS CLI v2**:
+#### 1. Tài khoản AWS
 
-```bash
-# Tải bộ cài đặt AWS CLI v2
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+- Có tài khoản **AWS** đang hoạt động (có thể dùng AWS Free Tier hoặc tài khoản học tập).
+- Tài khoản cần có quyền tạo các tài nguyên: **VPC, EC2, RDS, S3, SES, CloudFront, WAF, Route 53, IAM, ACM**.
 
-# Giải nén
-unzip awscliv2.zip
-
-# Tiến hành cài đặt hệ thống (yêu cầu quyền sudo)
-sudo ./aws/install
-
-# Kiểm tra cài đặt thành công
-aws --version
-```
-
-#### 2. Cấu hình Credentials cho cả 2 Tài khoản AWS
-
-Để quản lý song song hai tài khoản AWS trên cùng một máy trạm, chúng ta cấu hình các Named Profiles trong file `~/.aws/credentials`.
-
-Nhập lệnh sau để cấu hình cấu hình tài khoản Nguồn (Source - Tài khoản A):
-```bash
-aws configure --profile rookwork-source
-```
-Nhập các thông tin sau:
-- **AWS Access Key ID**: [Access Key của tài khoản A]
-- **AWS Secret Access Key**: [Secret Key của tài khoản A]
-- **Default region name**: `ap-southeast-1` (hoặc region bạn đang chạy Rookwork)
-- **Default output format**: `json`
-
-Tiếp tục nhập lệnh sau để cấu hình tài khoản Đích (Target - Tài khoản B):
-```bash
-aws configure --profile rookwork-target
-```
-Nhập các thông tin tương tự tương ứng với tài khoản B.
-
-{{% notice info %}}
-**Lưu ý cực kỳ quan trọng về Account Profile:**
-Trong suốt workshop này, chúng ta sẽ thực thi các câu lệnh AWS CLI từ máy trạm Fedora. Hãy **đặc biệt chú ý** đến tham số `--profile` ở cuối mỗi câu lệnh:
-- `--profile rookwork-source`: Dành riêng cho **Tài khoản Nguồn (Tài khoản A)** nơi chứa máy chủ Rookwork cũ.
-- `--profile rookwork-target`: Dành riêng cho **Tài khoản Đích (Tài khoản B)** nơi di chuyển máy chủ sang.
-Việc chạy lệnh sai profile/tài khoản sẽ dẫn đến lỗi phân quyền (Access Denied) hoặc làm thay đổi nhầm tài nguyên ở tài khoản còn lại.
+{{% notice tip %}}
+💡 Nên sử dụng **IAM User** thay vì Root Account để triển khai. Tạo IAM User với quyền **AdministratorAccess** hoặc gán policy tùy chỉnh theo tài nguyên cần dùng.
 {{% /notice %}}
 
-#### 3. Thu thập thông tin định danh tài khoản Đích
+---
 
-Để chia sẻ snapshot giữa hai tài khoản, bạn cần biết **AWS Account ID** của tài khoản Đích (B). Trên terminal, bạn có thể nhanh chóng lấy ID này bằng lệnh:
+#### 2. Công cụ cần thiết
+
+Cài đặt các công cụ sau trên máy tính của bạn:
+
+| Công cụ | Phiên bản | Mục đích |
+|---------|-----------|---------|
+| **Java JDK** | 17+ | Build và chạy Spring Boot backend |
+| **Maven** | 3.8+ | Quản lý dependency và build backend |
+| **Node.js** | 18+ | Build React 19 frontend |
+| **Yarn** | 1.22+ | Quản lý package frontend |
+| **Docker** | 24+ | Đóng gói ứng dụng thành container |
+| **AWS CLI** | v2 | Tương tác với AWS từ command line |
+| **Git** | 2.x | Quản lý source code |
+
+##### Kiểm tra cài đặt
+
+Chạy các lệnh sau để xác nhận các công cụ đã được cài đúng:
 
 ```bash
-aws sts get-caller-identity --query "Account" --output text --profile rookwork-target
+java --version        # Java 17+
+mvn --version         # Maven 3.8+
+node --version        # Node.js 18+
+yarn --version        # Yarn 1.22+
+docker --version      # Docker 24+
+aws --version         # AWS CLI 2.x
+git --version         # Git 2.x
 ```
-*(Kết quả ví dụ: `987654321012` - hãy ghi nhớ số tài khoản này cho bước tiếp theo).*
 
-#### 4. Quyền IAM tối thiểu yêu cầu
-Đảm bảo user IAM hoặc Role của bạn ở cả hai tài khoản có tối thiểu các quyền sau:
-- **Source Account (A)**: `ec2:CreateSnapshot`, `ec2:DescribeSnapshots`, `ec2:ModifySnapshotAttribute`.
-- **Target Account (B)**: `ec2:CopySnapshot`, `ec2:CreateVolume`, `ec2:AttachVolume`, `ec2:DescribeVolumes`.
+---
+
+#### 3. Cấu hình AWS CLI
+
+Cấu hình AWS CLI với thông tin credentials của IAM User:
+
+```bash
+aws configure
+```
+
+Nhập lần lượt:
+- **AWS Access Key ID** — lấy từ IAM Console → Security credentials
+- **AWS Secret Access Key** — lấy từ IAM Console → Security credentials
+- **Default region name** — ví dụ: `ap-southeast-1` (Singapore)
+- **Default output format** — `json`
+
+##### Kiểm tra kết nối
+
+```bash
+aws sts get-caller-identity
+```
+
+---
+
+#### 4. IAM Permissions
+
+Gắn **IAM policy** sau vào IAM User của bạn để có đủ quyền triển khai hạ tầng Rookwork:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:*",
+                "rds:*",
+                "s3:*",
+                "cloudfront:*",
+                "wafv2:*",
+                "route53:*",
+                "ses:*",
+                "acm:*",
+                "iam:CreateRole",
+                "iam:AttachRolePolicy",
+                "iam:PassRole",
+                "iam:GetRole",
+                "iam:CreateInstanceProfile",
+                "iam:AddRoleToInstanceProfile",
+                "elasticloadbalancing:*",
+                "autoscaling:*",
+                "ecr:*",
+                "logs:*",
+                "cloudwatch:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+---
+
+#### 5. Chuẩn bị Source Code
+
+Clone source code dự án Rookwork về máy:
+
+```bash
+# Backend (Spring Boot)
+git clone https://github.com/ChauThanhDat720/rookwork-backend.git
+
+# Frontend (React 19)
+git clone https://github.com/ChauThanhDat720/rookwork-frontend.git
+```
+
+##### Build thử Backend
+
+```bash
+cd rookwork-backend
+mvn clean package -DskipTests
+```
+
+##### Chạy thử Frontend
+
+```bash
+cd rookwork-frontend
+yarn install
+yarn build:browser
+yarn start:browser
+```
+
+---
+
+#### 6. Kiểm tra Docker
+
+Đảm bảo Docker đang chạy và có thể build image:
+
+```bash
+docker info
+docker pull amazoncorretto:17
+```
+
+
+---
+
+Sau khi hoàn thành tất cả các bước chuẩn bị, bạn đã sẵn sàng để bắt đầu triển khai hạ tầng AWS cho Rookwork từ phần [5.3 — Khởi tạo VPC, NAT Gateway và Security Groups](../5.3-S3-vpc/).

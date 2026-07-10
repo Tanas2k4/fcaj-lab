@@ -6,23 +6,16 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# EBS Snapshot Cross-Account Backup and Migration (Rookwork Project)
+This page summarizes the practical workshops conducted during the internship.
 
-#### Overview
+### Content
 
-During the development and testing of the **Rookwork** team collaboration application, the development team frequently encounters environment setup challenges, software conflicts, or infrastructure upgrade requirements. Consequently, **frequent server migrations** are an absolute necessity to resolve these issues.
-
-This workshop provides a step-by-step guide on how to use **Amazon EBS Snapshots** to back up and migrate entire application state datasets (including active databases and uploaded attachments) from a Source AWS account (Account A) to a Target AWS account (Account B) securely and efficiently. All command-line operations in this guide are executed from the developer's local workstation running **Linux Fedora GNOME**.
-
-#### Content
-
-1. [Overview & Architecture](5.1-Workshop-overview/)
-2. [Prerequisites](5.2-Prerequiste/)
-3. [Create and Share EBS Snapshot](5.3-Create-Share-Snapshot/)
-4. [Copy Snapshot & Create EBS Volume in Target Account](5.4-Copy-Snapshot-Create-Volume/)
-5. [Restore Data & Launch Application](5.5-Attach-Volume-Restore-App/)
-6. [Clean up Resources](5.6-Cleanup/)
+* **[5.1. Introduction](5.1-Workshop-overview/)** - Overview of system architecture and key processing flows of the project.
+* **[5.2. Prerequisite](5.2-Prerequiste/)** - Prerequisites and required tools to deploy the AWS infrastructure.
+* **[5.3. Initialize VPC, NAT Gateway and Security Groups](5.3-S3-vpc/)** - Guide on setting up the basic network infrastructure including VPC, NAT Gateway, S3 VPC Endpoint, and layered Security Groups.
+* **[5.4. Create EC2 & Verify Private Environment](5.4-Create-EC2-Private-Env/)** - Guide on launching EC2 instances in a private subnet, configuring network settings, and verifying connection and the internal network environment.
+* **[5.5. Create RDS Database](5.5-Create-RDS/)** - Guide on launching an Amazon RDS PostgreSQL database connected to EC2 and configuring Spring Boot.
+* **[5.6. Deploy Backend CI/CD with GitHub Actions](5.6-Backend-CICD/)** - Guide on building an automated CI/CD pipeline using GitHub Actions to deploy Spring Boot to EC2.
+* **[5.7. AWS Services Integration](5.7-Route53-S3-CloudFront-SES/)** - Guide on configuring AWS Route 53, static frontend hosting with S3 and CloudFront, private S3 Storage, and SES email notifications.
+* **[5.8. Deploy Frontend CI/CD with GitHub Actions](5.8-CICD-frontend/)** - Guide on building an automated CI/CD pipeline using GitHub Actions for React Frontend.

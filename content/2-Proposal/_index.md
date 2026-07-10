@@ -5,111 +5,76 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+# Rookwork - Team Collaboration Management Software
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+### 1. Project Overview
+In the context of the Industry 4.0 revolution and the growing trend of remote working and hybrid work, effective team management has become a critical factor for individuals, project teams, and businesses alike. **Rookwork** is an integrated, modern team collaboration management software designed to operate as a multi-platform application (browser and desktop app). The system uses a Client-Server architecture with a frontend built using **React 19**, which can be packaged as a desktop application using **Electron** for a seamless experience, alongside a robust backend built on **Spring Boot** combined with AWS services.
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+> **Note on current status:** At this stage, the primary platform being used is the **web browser** version (runs directly in the browser, no installation required). The **desktop version (packaged with Electron)** has been developed but **has not been fully synchronized** with the latest web version, and may therefore be missing some features or patches compared to the current web release. The long-term goal of the project remains to complete and synchronize the multi-platform desktop application as originally planned.
 
 ### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+Many teams still face major challenges in collaboration and project management:
+- **Scattered tools:** Many teams still manage work manually through asynchronous channels such as Excel, Google Sheets, Messenger/Zalo, and email. This makes it difficult to track progress, leads to mistakes, lacks transparency, and wastes time on unnecessary communication.
+- **Complex usability:** Existing project management platforms (such as Trello, Jira, Asana, Monday.com) often have complex interfaces and workflows with multiple layers of configuration, requiring users to spend time learning before they can use them effectively. This is especially challenging for small teams, students, or beginners who need a simple, intuitive tool that is accessible from the very first use.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+### 3. Solution Architecture (Workflow)
+The system operates on a distributed model within the AWS Cloud environment. The processing flow is structured as follows:
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+![Rookwork Architecture](/images/2-Proposal/Rookwork-architecture.png)
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+**1. Networking & Content Delivery Flow:**
+- All requests from users are resolved via **Amazon Route 53** (DNS Resolution).
+- The static Frontend interface is fully hosted on an **Amazon S3 (FE Static)** bucket.
+- To accelerate page load times and enhance security, the frontend is distributed via **Amazon CloudFront**, coupled with the **AWS WAF** firewall to prevent web exploits.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+**2. Routing & Compute Backend Flow:**
+- API traffic passes through the **Internet Gateway** into the **Amazon VPC**, and is then load-balanced by the **Application Load Balancer (ALB)**.
+- The Java Spring Boot Backend is deployed on **Amazon EC2** virtual machines, securely placed inside *Private Subnets*.
+- For EC2 instances to communicate with the internet (e.g., calling external APIs), outbound traffic is routed through a **NAT Gateway**.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+**3. Database & Storage Flow:**
+- Core business data is stored on **Amazon RDS (PostgreSQL)**, deployed in a **Multi-AZ (DB Replication)** model across multiple Availability Zones for disaster recovery.
+- Database schema changes are managed via Flyway.
+- Attachments are securely written to S3 by EC2 instances via an internal route using the **VPC S3 Gateway Endpoint**. Users can subsequently download files safely via Direct File Access or CloudFront.
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
-
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+**4. Notifications & Shared Services Flow:**
+- Events that trigger emails (such as team invitations) prompt EC2 to directly invoke **Amazon SES** to deliver emails to users.
+- SSL/TLS certificates are centrally managed by **AWS Certificate Manager (ACM)**, tightly integrated with system permissions governed by **AWS IAM**.
 
 ### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+*Technical Requirements*
+- **Backend:** Java Spring Boot, Spring Security (JWT/OAuth2), Spring Data JPA.
+- **Database:** PostgreSQL, Flyway (Database Migration).
+- **Frontend:** ReactJS / TypeScript.
+- **AWS Services Utilized:**
+  - *Network & Security:* Amazon Route 53, Amazon CloudFront, AWS WAF, Amazon VPC (IGW, NAT Gateway, ALB, S3 Gateway Endpoint), AWS ACM, AWS IAM.
+  - *Compute & Storage:* Amazon EC2, Amazon RDS (PostgreSQL Multi-AZ), Amazon S3 (FE Static & File Storage).
+  - *Others:* Amazon SES (Email Notification).
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+### 5. Implementation Roadmap
+- *Phase 1:* Design AWS Cloud architecture, configure VPC, Subnets, Route 53, and IAM.
+- *Phase 2:* Build the Spring Boot Backend and PostgreSQL database (RDS Multi-AZ).
+- *Phase 3:* Deploy Backend onto EC2 with ALB, and configure NAT Gateway.
+- *Phase 4:* Develop Frontend, upload to S3, and configure CloudFront + WAF.
+- *Phase 5:* Integrate S3 Endpoint for file storage and Amazon SES for sending emails.
+- *Phase 6:* End-to-end testing, security review, and system handover.
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+### 6. Operational Costs
+The Rookwork system is deployed on AWS following a High Availability architecture standard with three layers of security. The platform relies on core services including an EC2 cluster running the Spring Boot backend, an Amazon RDS PostgreSQL database, and Amazon S3 for hosting the React 19 frontend and static assets.
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+In the current phase, as the system primarily serves internal testing and pre-council acceptance review with limited traffic, the estimated total infrastructure cost is maintained at an optimal level of approximately **$136 USD/month** (equivalent to **3.48 million VND**). This budget includes:
+- A **Multi-AZ** redundancy setup for both the backend and database tiers.
+- A **NAT Gateway** to enforce network security within Private Subnets.
+- An **S3 Gateway Endpoint** that reduces internal bandwidth costs to zero.
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
-
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+If further budget reduction is required during this evaluation phase, the project can flexibly switch to a **Single-AZ** configuration or implement scheduled auto start/stop scripts for non-business hours.
 
 ### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+*Risk Matrix*
+- VPC routing misconfigurations preventing EC2 from accessing the internet or DB: High impact, medium probability.
+- AWS budget overruns due to NAT Gateway uptime or Multi-AZ configurations: Medium impact, high probability (for learning accounts).
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
-
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
-
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+*Mitigation Strategy*
+- Configure infrastructure using Infrastructure as Code (IaC) for easier control and rollback.
+- Set strict AWS Budgets and configure CloudWatch to monitor network traffic. Disable DB Replication (Multi-AZ) in Dev environments to save costs.

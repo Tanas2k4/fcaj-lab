@@ -5,9 +5,6 @@ weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 # Đừng mãi chọn Single-Purpose hay Lambda-lith: Lối đi giữa Read-Write Separation (CQRS Prelude) có gì hay?
 
