@@ -1,13 +1,13 @@
 ---
 title: "Tự đánh giá"
-date: 2024-01-01
+date: 2026-07-21
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
 
-Kỳ thực tập kéo dài gần 3 tháng (từ ngày 17/04/2026 đến 12/07/2026) tại **Công ty TNHH Amazon Web Services Viet Nam** là một trải nghiệm vô cùng quý giá đối với bản thân tôi. Đây là cơ hội tuyệt vời để tôi cọ xát thực tế, thử thách bản thân với vai trò **Tech Lead kiêm Software Developer** trong dự án phát triển phần mềm cộng tác Rookwork. 
+Kỳ thực tập kéo dài gần 3 tháng (từ ngày 17/04/2026 đến 30/07/2026) tại **Công ty TNHH Amazon Web Services Viet Nam** là một trải nghiệm vô cùng quý giá đối với bản thân tôi. Đây là cơ hội tuyệt vời để tôi cọ xát thực tế, thử thách bản thân với vai trò **Tech Lead kiêm Software Developer** trong dự án phát triển phần mềm cộng tác Rookwork. 
 
 Qua quá trình trực tiếp thiết kế kiến trúc hệ thống và code ứng dụng, tôi không chỉ nâng cao đáng kể tư duy lập trình, kỹ năng làm việc nhóm hay giải quyết các bài toán phát sinh, mà còn tích lũy được lượng kiến thức thực tế về các dịch vụ AWS cũng như các quy trình DevOps hiện đại.
 

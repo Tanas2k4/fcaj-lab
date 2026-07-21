@@ -1,13 +1,13 @@
 ---
 title: "Self-Assessment"
-date: 2024-01-01
+date: 2026-07-21
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
 
-My nearly 3-month internship (from April 17, 2026, to July 12, 2026) at **Amazon Web Services Vietnam Company Limited** has been an incredibly valuable experience. It gave me a great opportunity to gain hands-on exposure and challenge myself as a **Tech Lead and Software Developer** for the Rookwork collaboration platform.
+My nearly 3-month internship (from April 17, 2026, to July 30, 2026) at **Amazon Web Services Vietnam Company Limited** has been an incredibly valuable experience. It gave me a great opportunity to gain hands-on exposure and challenge myself as a **Tech Lead and Software Developer** for the Rookwork collaboration platform.
 
 By directly designing the system architecture and writing application code, I not only significantly improved my programming logic, teamwork, and problem-solving skills but also built a solid foundation of practical knowledge regarding AWS services and modern DevOps workflows.
 
