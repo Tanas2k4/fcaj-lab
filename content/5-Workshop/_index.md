@@ -19,3 +19,4 @@ This page summarizes the practical workshops conducted during the internship.
 * **[5.6. Deploy Backend CI/CD with GitHub Actions](5.6-Backend-CICD/)** - Guide on building an automated CI/CD pipeline using GitHub Actions to deploy Spring Boot to EC2.
 * **[5.7. AWS Services Integration](5.7-Route53-S3-CloudFront-SES/)** - Guide on configuring AWS Route 53, static frontend hosting with S3 and CloudFront, private S3 Storage, and SES email notifications.
 * **[5.8. Deploy Frontend CI/CD with GitHub Actions](5.8-CICD-frontend/)** - Guide on building an automated CI/CD pipeline using GitHub Actions for React Frontend.
+* **[5.9. Demo](5.9-Demo/)** - Video demonstration of the complete system workflow and application features.
